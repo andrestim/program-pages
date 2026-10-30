@@ -1,0 +1,199 @@
+/*
+ * One scale in the lifted panel. The published span is a solid Satin Silver rule between two
+ * end ticks; what lies beyond it continues as a dashed Hairline Edge run. The span draws once.
+ */
+
+.range__panel {
+  --max-at: 100%;
+  margin: 0;
+  padding: clamp(28px, 1rem + 2.4vw, 56px);
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius-l);
+  background: var(--panel-sheen), var(--bg-raised);
+  box-shadow: var(--shadow-panel);
+}
+
+.range__panel.has-beyond {
+  --max-at: 72%;
+}
+
+.range__caption {
+  font-size: var(--fs-ui);
+  color: var(--text-3);
+}
+
+.range__scale {
+  position: relative;
+  height: 15px;
+  margin-top: 56px;
+}
+
+/* End ticks on the solid span */
+.range__span {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: var(--max-at);
+  border-inline: 1px solid var(--text-2);
+}
+
+.range__span::before {
+  content: '';
+  position: absolute;
+  top: 7px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--text-2);
+  transform-origin: left;
+}
+
+.js .range__span::before {
+  transform: scaleX(0);
+  transition: transform var(--dur-draw) var(--ease-soft) 200ms;
+}
+
+.js .range__panel.is-visible .range__span::before {
+  transform: none;
+}
+
+.range__run {
+  position: absolute;
+  top: 7px;
+  left: var(--max-at);
+  right: 0;
+  border-top: 1px dashed var(--line-3);
+}
+
+.range__marks {
+  position: relative;
+  height: 96px;
+  margin-top: 20px;
+}
+
+.range__mark {
+  position: absolute;
+  top: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.range__mark.is-min {
+  left: 0;
+}
+
+.range__mark.is-max {
+  right: calc(100% - var(--max-at));
+  justify-items: end;
+  text-align: right;
+}
+
+.range__mark.is-beyond {
+  right: 0;
+  justify-items: end;
+  text-align: right;
+}
+
+.range__value {
+  font-size: var(--fs-figure);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.range__mark.is-beyond .range__value {
+  color: var(--text-3);
+}
+
+.range__label {
+  max-width: 24ch;
+  font-size: var(--fs-small);
+  line-height: var(--lh-small);
+  color: var(--text-2);
+}
+
+.range__panel .review-flag {
+  margin-top: 16px;
+}
+
+/* Tablets and phones: the scale turns vertical, values stacked beside it */
+@media (max-width: 1023px) {
+  .range__scale {
+    display: none;
+  }
+  .range__marks {
+    height: auto;
+    display: grid;
+    gap: 28px;
+    margin-top: 32px;
+    padding-left: 24px;
+    border-left: 1px solid var(--text-2);
+  }
+  .range__mark,
+  .range__mark.is-max,
+  .range__mark.is-beyond {
+    position: static;
+    justify-items: start;
+    text-align: left;
+  }
+  .range__mark.is-beyond {
+    margin-left: -25px;
+    padding-left: 24px;
+    border-left: 1px dashed var(--line-3);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .range__span::before {
+    transition-duration: 150ms;
+    transition-delay: 0ms;
+  }
+}
+
+/*
+ * Threshold: no panel. One floor line: solid across the published span, then dashed, running
+ * past the container to the page edge, where it passes into the dark.
+ */
+/* The run reaches the page edge; the section clips it so the page never scrolls sideways */
+.range--threshold {
+  overflow-x: clip;
+}
+
+.range--threshold .range__panel {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.range--threshold .range__caption {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.range--threshold .range__scale {
+  margin-top: 0;
+}
+
+.range--threshold .range__run {
+  right: calc((100vw - 100%) / -2);
+  border-top-color: var(--text-3);
+  -webkit-mask-image: linear-gradient(90deg, #000 30%, transparent);
+  mask-image: linear-gradient(90deg, #000 30%, transparent);
+}
+
+.range--threshold .range__span::before {
+  background: var(--text);
+}
+
+.range--threshold .range__marks {
+  margin-top: 28px;
+}

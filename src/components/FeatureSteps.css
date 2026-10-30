@@ -1,0 +1,610 @@
+.feature__layout {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--grid-gap);
+  align-items: start;
+}
+
+/* ---------- Step list ---------- */
+
+.feature__steps {
+  position: relative;
+  grid-column: 1 / span 5;
+  border-top: 1px solid var(--line-2);
+}
+
+
+.step {
+  position: relative;
+  border-bottom: 1px solid var(--line);
+}
+
+/*
+ * Active indicator — a Platinum hairline that stretches out from the left along the
+ * selected step's top edge, while the previous one retracts toward its right end.
+ */
+.step::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--text);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--dur-enter) var(--ease-out);
+}
+
+.step.is-active::before {
+  transform: scaleX(1);
+  transform-origin: left;
+  transition: transform var(--dur-slow) var(--ease-out) 60ms;
+}
+
+.step__tab {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  padding: 24px 0;
+  text-align: left;
+  border-radius: 0;
+}
+
+.step__tab:focus-visible {
+  outline-offset: -2px;
+  border-radius: var(--radius-xs);
+}
+
+/* "01  Connect": the numeral carries the sequence, the word names the stage */
+.step__label {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  font-size: var(--fs-caption);
+  color: var(--text-3);
+  transition: color var(--dur) var(--ease-out);
+}
+
+.step__index {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  font-variant-numeric: tabular-nums;
+}
+
+.step__title {
+  font-size: var(--fs-h3);
+  font-weight: 500;
+  letter-spacing: -0.012em;
+  line-height: 1.3;
+  color: var(--text-2);
+  transition: color var(--dur) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .step__tab:hover .step__title {
+    color: var(--text);
+  }
+}
+
+.step.is-active .step__label {
+  color: var(--text-2);
+}
+
+.step.is-active .step__title {
+  color: var(--text);
+}
+
+/* Expanding description: animates grid rows rather than height */
+.step__body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--dur-enter) var(--ease-out);
+}
+
+.step__body > div {
+  overflow: hidden;
+}
+
+.step__body > div > p {
+  padding-bottom: 28px;
+  max-width: 44ch;
+  color: var(--text-2);
+  font-size: var(--fs-small);
+  line-height: var(--lh-small);
+  opacity: 0;
+  transition: opacity var(--dur) var(--ease-out);
+}
+
+.step.is-active .step__body {
+  grid-template-rows: 1fr;
+}
+
+.step.is-active .step__body > div > p {
+  opacity: 1;
+  transition-delay: 120ms;
+}
+
+.step__body .review-flag {
+  margin: -12px 0 24px;
+}
+
+/* ---------- Panel frame: smoked glass ---------- */
+
+.feature__frame {
+  grid-column: 7 / -1;
+  display: grid;
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius-l);
+  background: var(--panel-sheen), var(--bg-raised);
+  box-shadow: var(--shadow-panel);
+  overflow: hidden;
+}
+
+/*
+ * Panels travel along the steps' axis. Moving to a later step, the old panel lifts out
+ * and the new one rises in from below; moving back, the reverse. Exit 200ms, entry 300ms.
+ */
+.feature__frame {
+  --exit-y: calc(var(--panel-shift) * -1);
+  --enter-y: var(--panel-shift);
+}
+
+.feature__frame[data-direction='back'] {
+  --exit-y: var(--panel-shift);
+  --enter-y: calc(var(--panel-shift) * -1);
+}
+
+.panel {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate3d(0, var(--exit-y), 0);
+  transition:
+    opacity var(--dur-quick) var(--ease-out),
+    transform var(--dur-quick) var(--ease-out),
+    visibility 0s linear var(--dur-quick);
+}
+
+.panel.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: visibility 0s;
+  animation: panel-in var(--dur-enter) var(--ease-out) 60ms both;
+}
+
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, var(--enter-y), 0);
+  }
+}
+
+/*
+ * The code illustration explains itself once the reader arrives, and again on each step
+ * change: lines settle in reading order, then the broker_id line lights up. Flow diagrams
+ * stay still; they arrive with their panel and need no motion of their own.
+ */
+.js [data-inview='false'] .code__line {
+  opacity: 0;
+}
+
+[data-inview='true'] :is(.panel.is-active, .step.is-active) .code__line {
+  animation: settle-in 320ms var(--ease-out) both;
+  animation-delay: calc(100ms + var(--n) * 32ms);
+}
+
+[data-inview='true'] :is(.panel.is-active, .step.is-active) .code__line.is-highlight {
+  animation:
+    settle-in 320ms var(--ease-out) calc(100ms + var(--n) * 32ms) both,
+    line-wash 360ms var(--ease-out) 720ms both;
+}
+
+/* Second and later visits: no line-by-line settle; the highlight arrives with the panel */
+[data-inview='true'] :is(.panel.is-active, .step.is-active).is-replay .code__line {
+  animation: none;
+}
+
+[data-inview='true'] :is(.panel.is-active, .step.is-active).is-replay .code__line.is-highlight {
+  animation: line-wash 240ms var(--ease-out) 280ms both;
+}
+
+@keyframes settle-in {
+  from {
+    opacity: 0;
+    transform: translate3d(-4px, 0, 0);
+  }
+}
+
+@keyframes line-wash {
+  from {
+    background-color: transparent;
+    box-shadow: inset 2px 0 0 transparent;
+  }
+}
+
+.panel:focus-visible {
+  outline-offset: -3px;
+}
+
+.panel__bar {
+  padding: 16px 28px;
+  border-bottom: 1px solid var(--line);
+  font-size: var(--fs-caption);
+  color: var(--text-2);
+}
+
+.panel__body {
+  padding: 32px 28px 36px;
+  container-type: inline-size;
+}
+
+.panel__note {
+  margin-top: 20px;
+  font-size: var(--fs-caption);
+  color: var(--text-3);
+}
+
+/* ---------- Flow ---------- */
+
+.flow {
+  position: relative;
+  display: grid;
+  gap: 0;
+}
+
+/* Vertical rail joining the stages */
+.flow::before {
+  content: '';
+  position: absolute;
+  top: 30px;
+  bottom: 30px;
+  left: 7px;
+  width: 1px;
+  background: linear-gradient(180deg, var(--line-3), var(--line-2));
+}
+
+.flow__node {
+  position: relative;
+  display: grid;
+  grid-template-columns: 15px 1fr auto;
+  align-items: center;
+  column-gap: 22px;
+  padding: 16px 0;
+}
+
+/* Row divider starts after the rail so the rail reads as continuous */
+.flow__node + .flow__node::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 37px;
+  right: 0;
+  height: 1px;
+  background: var(--line);
+}
+
+.flow__dot {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1px solid var(--line-3);
+  background: var(--bg-raised);
+  box-shadow: inset 0 0 0 4px var(--bg-raised);
+}
+
+.flow__node.is-emphasis .flow__dot {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.flow__text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.flow__label {
+  font-size: var(--fs-small);
+  font-weight: 500;
+}
+
+.flow__detail {
+  font-size: var(--fs-caption);
+  line-height: 1.5;
+  color: var(--text-3);
+}
+
+/* The label of the control the user presses at this stage — named, not drawn as a button */
+.flow__action {
+  font-size: var(--fs-caption);
+  color: var(--text-2);
+  white-space: nowrap;
+}
+
+@container (max-width: 420px) {
+  .flow__node {
+    grid-template-columns: 15px 1fr;
+    row-gap: 12px;
+  }
+  .flow__action {
+    grid-column: 2;
+    justify-self: start;
+  }
+}
+
+/* ---------- Formula: a documented calculation, with optional illustrative figures ---------- */
+
+.formula__rows {
+  margin-top: 8px;
+}
+
+.formula__head {
+  margin-top: 8px;
+  text-align: right;
+  font-size: var(--fs-micro);
+  color: var(--text-3);
+}
+
+.formula__head + .formula__rows {
+  margin-top: 0;
+}
+
+.formula__row {
+  display: grid;
+  grid-template-columns: 32px 1fr auto;
+  align-items: baseline;
+  column-gap: 12px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.formula__term {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+/* The sum rule: the result sits under a brighter line, as in a written calculation */
+.formula__row.is-result {
+  margin-top: -1px;
+  border-top: 1px solid var(--line-3);
+  border-bottom: 0;
+}
+
+.formula__op {
+  font-size: var(--fs-h3);
+  font-weight: 300;
+  line-height: 1;
+  color: var(--text-3);
+}
+
+.formula__label {
+  font-size: var(--fs-h3);
+  font-weight: 500;
+  letter-spacing: -0.012em;
+  color: var(--text-2);
+}
+
+.formula__row.is-result .formula__label {
+  color: var(--text);
+}
+
+.formula__detail {
+  font-size: var(--fs-caption);
+  color: var(--text-3);
+}
+
+/* Worked figure: light tabular numerals, the result brightest, as in a written sum */
+.formula__example {
+  font-size: var(--fs-h3);
+  font-weight: 300;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+  color: var(--text-2);
+  text-align: right;
+}
+
+.formula__row.is-result .formula__example {
+  font-weight: 400;
+  color: var(--text);
+}
+
+@container (max-width: 460px) {
+  .formula__row {
+    grid-template-columns: 28px 1fr auto;
+    padding: 18px 0;
+  }
+}
+
+/* ---------- Code ---------- */
+
+.code__request {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 18px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  color: var(--text-2);
+}
+
+.code__method {
+  padding: 3px 8px;
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius-s);
+  color: var(--text);
+  letter-spacing: 0.08em;
+}
+
+.code__block {
+  margin: 0;
+  padding: 18px 0;
+  border-radius: var(--radius-m);
+  background: var(--code-inset);
+  border: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  line-height: 1.75;
+  color: var(--text-2);
+  overflow-x: auto;
+}
+
+.code__line {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  padding-right: 20px;
+  white-space: pre;
+}
+
+.code__ln {
+  padding-right: 16px;
+  text-align: right;
+  color: rgba(232, 236, 241, 0.2);
+  user-select: none;
+}
+
+.code__line.is-highlight {
+  background: var(--accent-soft);
+  box-shadow: inset 2px 0 0 var(--accent);
+}
+
+.code__line mark {
+  background: none;
+  color: var(--text);
+}
+
+/* A short label beside the attributed line, pointing back at it */
+.code__line.is-highlight {
+  grid-template-columns: 44px 1fr auto;
+}
+
+.code__annotation {
+  align-self: center;
+  padding-left: 16px;
+  font-family: var(--font-sans);
+  font-size: var(--fs-micro);
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.code__annotation::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  margin-right: 8px;
+  vertical-align: middle;
+  background: var(--accent);
+  opacity: 0.6;
+}
+
+@container (max-width: 460px) {
+  .code__annotation {
+    display: none;
+  }
+}
+
+/* ---------- Ledger ---------- */
+
+.ledger__path {
+  margin-bottom: 18px;
+  font-size: var(--fs-caption);
+  color: var(--text-3);
+}
+
+.ledger__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-small);
+  font-variant-numeric: tabular-nums;
+}
+
+.ledger__table th,
+.ledger__table td {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  text-align: right;
+  font-weight: 400;
+}
+
+.ledger__table :is(th, td):nth-child(-n + 2) {
+  text-align: left;
+}
+
+.ledger__table thead th {
+  padding-top: 0;
+  font-size: var(--fs-caption);
+  color: var(--text-3);
+  border-bottom-color: var(--line-2);
+}
+
+.ledger__table tbody th {
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  color: var(--text);
+}
+
+.ledger__table td {
+  color: var(--text-2);
+}
+
+@container (max-width: 420px) {
+  .ledger__table :is(th, td):nth-child(2) {
+    display: none;
+  }
+}
+
+/* ---------- Responsive ---------- */
+
+/* ---------- Compact (<1024px): disclosure list, panel opens under its step ---------- */
+
+.step__heading {
+  font: inherit;
+}
+
+.feature__frame.is-inline {
+  display: block;
+  margin-bottom: 32px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .step__body {
+    transition: none;
+  }
+  .panel.is-active {
+    animation-duration: 150ms;
+    animation-delay: 0ms;
+  }
+  [data-inview] .code__line,
+  [data-inview] .code__line.is-highlight {
+    animation: none !important;
+  }
+  .js [data-inview='false'] .code__line {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 767px) {
+  .panel__body {
+    padding: 28px 20px;
+  }
+  .panel__bar {
+    padding: 14px 20px;
+  }
+  .code__block {
+    font-size: var(--fs-micro);
+  }
+  .code__line,
+  .code__line.is-highlight {
+    grid-template-columns: 32px 1fr auto;
+  }
+  .code__ln {
+    padding-right: 12px;
+  }
+}

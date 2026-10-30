@@ -1,0 +1,347 @@
+/*
+ * Hero — the page's only expressive visual moment.
+ * ≥768px: photograph is a full-bleed plate with copy set in its negative space.
+ * <768px: copy, CTA and audience first, the object below as a cropped plate.
+ */
+
+.hero {
+  position: relative;
+  min-height: clamp(640px, 94svh, 900px);
+  display: flex;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.hero__visual {
+  position: absolute;
+  inset: 0 0 0 22%;
+  z-index: -1;
+}
+
+/*
+ * Photograph and light move together as one plate; the scrims stay fixed to the frame.
+ * Scroll depth is written straight to this element by Hero.tsx (no inherited variable).
+ */
+.hero__plate {
+  position: absolute;
+  inset: 0;
+  transform: scale(1.04);
+  transform-origin: 50% 0;
+}
+
+.hero__visual picture,
+.hero__image {
+  width: 100%;
+  height: 100%;
+}
+
+
+.hero__image {
+  object-fit: cover;
+  object-position: 72% 40%;
+  transition: opacity var(--dur-photo) var(--ease-out);
+}
+
+/* The photograph appears once decoded; without JS it is simply there */
+.js .hero:not(.is-loaded) .hero__image {
+  opacity: 0;
+}
+
+/*
+ * The metal catches the light once: as the photograph settles, a soft highlight
+ * sweeps onto the lit edge and then rests. No loop, so nothing keeps moving.
+ */
+.hero__light {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(38% 46% at 54% 38%, var(--hero-light), transparent 70%);
+}
+
+.js .hero:not(.is-loaded) .hero__light {
+  opacity: 0;
+}
+
+.hero.is-loaded .hero__light {
+  animation: hero-light-catch var(--dur-light) var(--ease-out) 400ms both;
+}
+
+@keyframes hero-light-catch {
+  from {
+    opacity: 0;
+    transform: translate3d(-4%, 0, 0);
+  }
+}
+
+.hero__scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, var(--bg) 0%, rgba(11, 12, 14, 0.7) 18%, rgba(11, 12, 14, 0.15) 42%, transparent 60%),
+    linear-gradient(0deg, var(--bg) 0%, rgba(11, 12, 14, 0.5) 16%, transparent 34%),
+    linear-gradient(180deg, rgba(11, 12, 14, 0.6) 0%, transparent 14%);
+}
+
+.hero__inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-top: calc(var(--header-h) + 64px);
+  padding-bottom: 40px;
+}
+
+.hero__copy {
+  max-width: 720px;
+  margin-bottom: clamp(64px, 9vh, 112px);
+}
+
+.hero__title {
+  font-size: var(--fs-display);
+  font-weight: 500;
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-display);
+}
+
+.hero__title span {
+  display: block;
+  text-wrap: balance;
+}
+
+.hero__title span + span {
+  color: var(--text-2);
+}
+
+.hero__lede {
+  margin-top: 28px;
+  max-width: 44ch;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 28px;
+  margin-top: 40px;
+}
+
+.hero__audience {
+  display: flex;
+  align-items: baseline;
+  gap: 40px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+  font-size: var(--fs-small);
+}
+
+.hero__audience-label {
+  flex: none;
+  color: var(--text-3);
+}
+
+.hero__audience ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 40px;
+  color: var(--text-2);
+}
+
+/* The page's one authored entrance: copy rises once on load, CSS only, never waits on script */
+.hero__in {
+  animation: hero-in var(--dur-hero-in) var(--ease-out) both;
+  animation-delay: calc(120ms + var(--i, 0) * 90ms);
+}
+
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0);
+  }
+}
+
+/*
+ * Horizon: the image spans the full width so its one lit line can cross the whole frame
+ * (at 66% of its height). The copy rises into the dark upper half, above that line.
+ */
+.hero--horizon .hero__visual {
+  left: 0;
+}
+
+.hero--horizon .hero__image {
+  object-position: 50% 66%;
+}
+
+.hero--horizon .hero__scrim {
+  background:
+    linear-gradient(180deg, var(--bg) 0%, rgba(11, 12, 14, 0.82) 22%, rgba(11, 12, 14, 0.2) 48%, transparent 60%),
+    linear-gradient(0deg, var(--bg) 0%, transparent 16%);
+}
+
+.hero--horizon .hero__light {
+  background: radial-gradient(52% 9% at 58% 66%, var(--hero-light), transparent 72%);
+}
+
+.hero--horizon .hero__inner {
+  justify-content: flex-start;
+  padding-top: calc(var(--header-h) + clamp(56px, 10vh, 120px));
+}
+
+/*
+ * Tall: a full-viewport room. The image spans the width, the copy sits low in the dark left
+ * wall, and the light rises once in the slit instead of sweeping across.
+ */
+.hero--tall {
+  min-height: max(640px, 100svh);
+}
+
+.hero--tall .hero__visual {
+  left: 0;
+}
+
+.hero--tall .hero__image {
+  object-position: 66% 50%;
+}
+
+.hero--tall .hero__scrim {
+  background:
+    linear-gradient(90deg, var(--bg) 0%, rgba(11, 12, 14, 0.75) 26%, rgba(11, 12, 14, 0.1) 50%, transparent 62%),
+    linear-gradient(0deg, var(--bg) 0%, rgba(11, 12, 14, 0.6) 14%, transparent 32%);
+}
+
+.hero--tall .hero__light {
+  background: radial-gradient(5% 55% at 66% 44%, var(--hero-light), transparent 75%);
+}
+
+.hero--tall.is-loaded .hero__light {
+  animation-name: hero-light-rise;
+}
+
+@keyframes hero-light-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 6%, 0);
+  }
+}
+
+/* Narrower than the image's 3:2, the cover crop pulls the slit under the headline; move it right */
+@media (max-width: 1199px) {
+  .hero--tall .hero__image {
+    object-position: 20% 50%;
+  }
+  .hero--tall .hero__light {
+    background: radial-gradient(5% 55% at 80% 44%, var(--hero-light), transparent 75%);
+  }
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 1023px) {
+  .hero__visual {
+    left: 0;
+  }
+  .hero__image {
+    object-position: 82% 40%;
+  }
+  .hero__scrim {
+    background:
+      linear-gradient(90deg, var(--bg) 0%, rgba(11, 12, 14, 0.9) 38%, rgba(11, 12, 14, 0.45) 62%, transparent 88%),
+      linear-gradient(0deg, var(--bg) 0%, rgba(11, 12, 14, 0.5) 18%, transparent 40%),
+      linear-gradient(180deg, rgba(11, 12, 14, 0.6) 0%, transparent 14%);
+  }
+  .hero__audience {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+/* ---------- Mobile: recomposed, copy first ---------- */
+@media (max-width: 767px) {
+  .hero {
+    min-height: 0;
+    flex-direction: column;
+  }
+
+  .hero .hero__visual {
+    position: relative;
+    inset: auto;
+    overflow: hidden;
+    order: 3;
+    height: min(110vw, 480px);
+    margin-top: -24px;
+  }
+
+  .hero .hero__image {
+    object-position: 50% 30%;
+  }
+
+  .hero .hero__scrim {
+    background:
+      linear-gradient(180deg, var(--bg) 0%, rgba(11, 12, 14, 0.5) 24%, transparent 46%),
+      linear-gradient(0deg, var(--bg) 0%, rgba(11, 12, 14, 0.4) 22%, transparent 44%);
+  }
+
+  .hero .hero__light {
+    background: radial-gradient(50% 40% at 40% 40%, var(--hero-light), transparent 70%);
+  }
+
+  .hero__inner {
+    display: contents;
+  }
+
+  .hero__copy {
+    order: 1;
+    width: 100%;
+    margin: 0;
+    padding: calc(var(--header-h) + 48px) var(--gutter) 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero__lede {
+    margin-top: 20px;
+  }
+
+  .hero__actions {
+    margin-top: 32px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+  }
+
+  .hero__actions > span {
+    display: block;
+  }
+
+  .hero__actions .cta--primary {
+    width: 100%;
+  }
+
+  .hero__actions .cta--text {
+    align-self: center;
+  }
+
+  .hero__audience {
+    order: 2;
+    margin: 32px var(--gutter) 0;
+    position: relative;
+    z-index: 1;
+    gap: 10px;
+  }
+
+  .hero__audience ul {
+    gap: 4px 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__plate {
+    transform: none;
+  }
+  .hero__in {
+    animation: none;
+  }
+  .hero__image {
+    transition: none;
+  }
+  .hero.is-loaded .hero__light {
+    animation: none;
+  }
+}

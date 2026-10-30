@@ -1,0 +1,483 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-30T01:36:52Z",
+  "title": "Design System: Programme Landing Pages",
+  "extensions": {
+    "colorMeta": {
+      "graphite-night": {
+        "role": "neutral",
+        "displayName": "Graphite Night",
+        "canonical": "#0b0c0e",
+        "tonalRamp": [
+          "#0b0c0e",
+          "#14161a",
+          "#1f2226",
+          "#2e3237",
+          "#4a4f56",
+          "#6f747b",
+          "#a2a7ae",
+          "#eceef1"
+        ]
+      },
+      "graphite-raised": {
+        "role": "neutral",
+        "displayName": "Graphite Raised",
+        "canonical": "#101114",
+        "tonalRamp": [
+          "#0b0c0e",
+          "#101114",
+          "#1a1c20",
+          "#272a2f",
+          "#41454b",
+          "#6f747b",
+          "#a2a7ae",
+          "#eceef1"
+        ]
+      },
+      "platinum": {
+        "role": "primary",
+        "displayName": "Platinum",
+        "canonical": "#eceef1",
+        "tonalRamp": [
+          "#1f2226",
+          "#3a3e44",
+          "#5a5f66",
+          "#7d838a",
+          "#a2a7ae",
+          "#c6cacf",
+          "#dcdfe3",
+          "#eceef1"
+        ]
+      },
+      "satin-silver": {
+        "role": "neutral",
+        "displayName": "Satin Silver",
+        "canonical": "#a2a7ae",
+        "tonalRamp": [
+          "#1f2226",
+          "#33373c",
+          "#4c5157",
+          "#6f747b",
+          "#8a8f96",
+          "#a2a7ae",
+          "#c6cacf",
+          "#e3e5e8"
+        ]
+      },
+      "pewter": {
+        "role": "neutral",
+        "displayName": "Pewter",
+        "canonical": "#80858c",
+        "tonalRamp": [
+          "#16181b",
+          "#25282c",
+          "#3b3f44",
+          "#575c62",
+          "#80858c",
+          "#9a9ea4",
+          "#bcc0c4",
+          "#e0e2e4"
+        ]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "rgba(232, 236, 241, 0.08)"
+      },
+      "hairline-strong": {
+        "role": "neutral",
+        "displayName": "Hairline Strong",
+        "canonical": "rgba(232, 236, 241, 0.14)"
+      },
+      "hairline-edge": {
+        "role": "neutral",
+        "displayName": "Hairline Edge",
+        "canonical": "rgba(232, 236, 241, 0.24)"
+      },
+      "blue-titanium": {
+        "role": "secondary",
+        "displayName": "Blue Titanium",
+        "canonical": "#9eb1c4",
+        "tonalRamp": [
+          "#1a2129",
+          "#28333e",
+          "#3a4856",
+          "#566a7e",
+          "#7a8fa3",
+          "#9eb1c4",
+          "#c2d0dd",
+          "#e5ecf2"
+        ]
+      },
+      "blue-titanium-wash": {
+        "role": "secondary",
+        "displayName": "Blue Titanium Wash",
+        "canonical": "rgba(158, 177, 196, 0.14)"
+      },
+      "review-amber": {
+        "role": "tooling",
+        "displayName": "Review Amber",
+        "canonical": "#d8b26e",
+        "tonalRamp": [
+          "#2a2112",
+          "#433419",
+          "#6b5226",
+          "#977438",
+          "#c09451",
+          "#d8b26e",
+          "#e7cc9c",
+          "#f4e6cc"
+        ]
+      },
+      "plate-white": {
+        "role": "primary",
+        "displayName": "Plate White",
+        "canonical": "#ffffff"
+      },
+      "identifier-wash": {
+        "role": "neutral",
+        "displayName": "Identifier Wash",
+        "canonical": "rgba(255, 255, 255, 0.06)"
+      },
+      "code-inset": {
+        "role": "neutral",
+        "displayName": "Code Inset",
+        "canonical": "rgba(0, 0, 0, 0.32)"
+      },
+      "hero-light": {
+        "role": "neutral",
+        "displayName": "Hero Light",
+        "canonical": "rgba(206, 220, 234, 0.075)"
+      }
+    },
+    "typographyMeta": {
+      "figure": {
+        "displayName": "Figure",
+        "purpose": "Key figures band only; light 40→56px tabular numerals, always below Display."
+      },
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headline only; two sentences, second line in Satin Silver."
+      },
+      "statement": {
+        "displayName": "Statement",
+        "purpose": "Closing line only; one step below the Hero."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "One per section, columns 1–6, 1.5× below Display."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Column, step and block headings."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "Section introductions in Satin Silver, 42–44ch."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running copy and FAQ questions (500)."
+      },
+      "body-small": {
+        "displayName": "Body small",
+        "purpose": "Column, step, term and answer copy."
+      },
+      "ui": {
+        "displayName": "UI",
+        "purpose": "Navigation and the small header button."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Panel captions, notes, table headers, footer."
+      },
+      "numeral": {
+        "displayName": "Numeral (mono)",
+        "purpose": "Ordered step numerals and code line numbers only."
+      }
+    },
+    "shadows": [
+      {
+        "name": "panel-lift",
+        "value": "inset 0 1px 0 rgba(255,255,255,0.05), 0 40px 80px -40px rgba(0,0,0,0.7)",
+        "purpose": "The single lifted technical panel per page."
+      },
+      {
+        "name": "plate-edge",
+        "value": "inset 0 1px 0 rgba(255,255,255,0.9), 0 1px 2px rgba(0,0,0,0.4)",
+        "purpose": "Machined top edge of the primary CTA at rest."
+      },
+      {
+        "name": "plate-bloom",
+        "value": "inset 0 1px 0 #ffffff, 0 6px 24px -8px rgba(220,230,240,0.35)",
+        "purpose": "Primary CTA hover; the faintest permitted glow."
+      },
+      {
+        "name": "header-glass",
+        "value": "background: rgba(11,12,14,0.72); backdrop-filter: saturate(140%) blur(18px)",
+        "purpose": "Sticky header after scroll."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Default easing for every state change, press and entrance."
+      },
+      {
+        "name": "dur-press",
+        "value": "120ms",
+        "purpose": "Pointer-down feedback: CTA scale 0.97, FAQ ring scale 0.92, text-link dim."
+      },
+      {
+        "name": "dur-quick",
+        "value": "200ms",
+        "purpose": "Release, arrow travel, panel exit, FAQ collapse."
+      },
+      {
+        "name": "dur",
+        "value": "260ms",
+        "purpose": "Default UI state change (colour, hover bloom)."
+      },
+      {
+        "name": "dur-enter",
+        "value": "300ms",
+        "purpose": "Panel entry, step description, FAQ open."
+      },
+      {
+        "name": "dur-slow",
+        "value": "560ms",
+        "purpose": "One entrance per section heading."
+      },
+      {
+        "name": "panel-shift",
+        "value": "6px",
+        "purpose": "Direction-aware panel travel; 0 under reduced motion."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "150ms opacity only",
+        "purpose": "Feedback kept, travel removed; heights switch instantly."
+      },
+      {
+        "name": "hero-light-catch",
+        "value": "2400ms ease-out, 400ms after decode, once",
+        "purpose": "The metal catches the light once and rests; no loop."
+      },
+      {
+        "name": "step-stretch",
+        "value": "in 560ms from left, out 300ms to right",
+        "purpose": "Active step hairline stretches out and retracts."
+      },
+      {
+        "name": "ease-soft",
+        "value": "cubic-bezier(0.25, 0.8, 0.25, 1)",
+        "purpose": "Long, unhurried hairline draws (Benefits hover)."
+      },
+      {
+        "name": "dur-draw / dur-draw-out",
+        "value": "960ms / 640ms",
+        "purpose": "Hairline drawing in on hover / withdrawing."
+      },
+      {
+        "name": "hero-parallax",
+        "value": "photo 0→110px (40px mobile); copy holds 30%, eases to 0.4",
+        "purpose": "Depth; written directly to the plate and copy per frame, will-change only while visible."
+      },
+      {
+        "name": "cta-sheen",
+        "value": "1100ms ease-in-out once; leave = 180ms fade then reset",
+        "purpose": "Light crossing brushed platinum; never cuts away mid-sweep."
+      },
+      {
+        "name": "code-sequence",
+        "value": "first view: lines 32ms apart + wash at 720ms; replay: wash 240ms at 280ms",
+        "purpose": "Explains broker_id once, stays crisp on repeat."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact-header",
+        "value": "420px"
+      },
+      {
+        "name": "mobile",
+        "value": "767px"
+      },
+      {
+        "name": "nav-collapse",
+        "value": "860px"
+      },
+      {
+        "name": "compact-feature",
+        "value": "1023px"
+      },
+      {
+        "name": "desktop-design",
+        "value": "1440px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The Platinum plate, the single brightest object on screen. Press answers on pointer-down (scale 0.97, 120ms); hover is fine-pointer only.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\"><span>Become a Broker</span><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" aria-hidden=\"true\"><path d=\"M1 7h11M8 3l4 4-4 4\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></a>",
+      "css": ".ds-btn-primary{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;background:#eceef1;color:#0b0c0e;font:500 15px/1 'Inter Variable',Inter,system-ui,sans-serif;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,0.9),0 1px 2px rgba(0,0,0,0.4);transition:background-color 260ms cubic-bezier(0.22,1,0.36,1),box-shadow 260ms cubic-bezier(0.22,1,0.36,1),transform 200ms cubic-bezier(0.22,1,0.36,1)}.ds-btn-primary svg{transition:transform 200ms cubic-bezier(0.22,1,0.36,1)}.ds-btn-primary:active{background:#dcdfe3;transform:scale(0.97);transition:background-color 0ms,transform 120ms cubic-bezier(0.22,1,0.36,1)}.ds-btn-primary:focus-visible{outline:2px solid #9eb1c4;outline-offset:3px}.ds-btn-primary:focus-visible svg{transform:translateX(3px)}@media (hover:hover) and (pointer:fine){.ds-btn-primary:hover{box-shadow:inset 0 1px 0 #fff,0 6px 24px -8px rgba(220,230,240,0.35)}.ds-btn-primary:hover svg{transform:translateX(3px)}.ds-btn-primary:hover:active{background:#dcdfe3}}@media (prefers-reduced-motion:reduce){.ds-btn-primary:active{transform:none}}.ds-btn-primary::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,0.95) 46%,rgba(255,255,255,0.6) 50%,rgba(150,166,182,0.32) 55%,transparent 68%);opacity:0;transform:translate3d(-115%,0,0);pointer-events:none;transition:opacity 180ms cubic-bezier(0.22,1,0.36,1),transform 0s linear 180ms}@media (hover:hover) and (pointer:fine){.ds-btn-primary:hover::after{opacity:1;transform:translate3d(115%,0,0);transition:opacity 120ms cubic-bezier(0.22,1,0.36,1),transform 1100ms cubic-bezier(0.65,0,0.35,1) 40ms}}"
+    },
+    {
+      "name": "Small Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary-small",
+      "description": "Header CTA; appears only while no in-page primary CTA is visible.",
+      "html": "<a class=\"ds-btn-small\" href=\"#\"><span>Become a Broker</span><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" aria-hidden=\"true\"><path d=\"M1 7h11M8 3l4 4-4 4\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></a>",
+      "css": ".ds-btn-small{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 16px;border-radius:999px;background:#eceef1;color:#0b0c0e;font:500 14px/1 'Inter Variable',Inter,system-ui,sans-serif;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,0.9),0 1px 2px rgba(0,0,0,0.4);transition:background-color 260ms cubic-bezier(0.22,1,0.36,1),box-shadow 260ms cubic-bezier(0.22,1,0.36,1),transform 200ms cubic-bezier(0.22,1,0.36,1)}.ds-btn-small svg{transition:transform 200ms cubic-bezier(0.22,1,0.36,1)}.ds-btn-small:active{background:#dcdfe3;transform:scale(0.97);transition:background-color 0ms,transform 120ms cubic-bezier(0.22,1,0.36,1)}.ds-btn-small:focus-visible{outline:2px solid #9eb1c4;outline-offset:3px}.ds-btn-small:focus-visible svg{transform:translateX(3px)}@media (hover:hover) and (pointer:fine){.ds-btn-small:hover{box-shadow:inset 0 1px 0 #fff,0 6px 24px -8px rgba(220,230,240,0.35)}.ds-btn-small:hover svg{transform:translateX(3px)}.ds-btn-small:hover:active{background:#dcdfe3}}@media (prefers-reduced-motion:reduce){.ds-btn-small:active{transform:none}}.ds-btn-small::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,0.95) 46%,rgba(255,255,255,0.6) 50%,rgba(150,166,182,0.32) 55%,transparent 68%);opacity:0;transform:translate3d(-115%,0,0);pointer-events:none;transition:opacity 180ms cubic-bezier(0.22,1,0.36,1),transform 0s linear 180ms}@media (hover:hover) and (pointer:fine){.ds-btn-small:hover::after{opacity:1;transform:translate3d(115%,0,0);transition:opacity 120ms cubic-bezier(0.22,1,0.36,1),transform 1100ms cubic-bezier(0.65,0,0.35,1) 40ms}}"
+    },
+    {
+      "name": "Text Link",
+      "kind": "button",
+      "refersTo": "link-text",
+      "description": "Secondary action (e.g. API Documentation); underline draws in on hover.",
+      "html": "<a class=\"ds-link\" href=\"#\"><span class=\"ds-link__label\">API Documentation</span><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" aria-hidden=\"true\"><path d=\"M3.5 10.5l7-7M5 3.5h5.5V9\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></a>",
+      "css": ".ds-link{display:inline-flex;align-items:center;gap:10px;min-height:44px;color:#a2a7ae;font:500 15px/1 'Inter Variable',Inter,system-ui,sans-serif;text-decoration:none;transition:color 260ms cubic-bezier(0.22,1,0.36,1)}.ds-link__label{background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;padding-bottom:2px;transition:background-size 260ms cubic-bezier(0.22,1,0.36,1)}.ds-link svg{transition:transform 260ms cubic-bezier(0.22,1,0.36,1)}.ds-link:hover{color:#eceef1}.ds-link:hover .ds-link__label{background-size:100% 1px}.ds-link:hover svg{transform:translate(2px,-2px)}.ds-link:focus-visible{outline:2px solid #9eb1c4;outline-offset:3px;border-radius:4px}"
+    },
+    {
+      "name": "Header Navigation",
+      "kind": "nav",
+      "refersTo": "nav",
+      "description": "Wordmark, programme label and section links; frosted graphite glass after scroll.",
+      "html": "<header class=\"ds-nav\"><a class=\"ds-nav__brand\" href=\"#\"><span class=\"ds-nav__mark\">EXCHANGE</span><span class=\"ds-nav__tick\"></span><span class=\"ds-nav__label\">API Broker</span></a><nav><a href=\"#\">Benefits</a><a href=\"#\" aria-current=\"true\">Integration</a><a href=\"#\">Programme</a><a href=\"#\">FAQ</a></nav></header>",
+      "css": ".ds-nav{display:flex;align-items:center;justify-content:space-between;height:64px;padding:0 24px;background:rgba(11,12,14,0.72);backdrop-filter:saturate(140%) blur(18px);border-bottom:1px solid rgba(232,236,241,0.08);font-family:'Inter Variable',Inter,system-ui,sans-serif}.ds-nav__brand{display:inline-flex;align-items:center;gap:14px;color:#eceef1;text-decoration:none}.ds-nav__mark{font-size:13px;font-weight:600;letter-spacing:0.28em}.ds-nav__tick{width:1px;height:14px;background:rgba(232,236,241,0.24)}.ds-nav__label{font-size:14px;color:#a2a7ae}.ds-nav nav{display:flex;gap:4px}.ds-nav nav a{position:relative;display:inline-flex;align-items:center;min-height:44px;padding:0 14px;font-size:14px;color:#a2a7ae;text-decoration:none;transition:color 260ms cubic-bezier(0.22,1,0.36,1)}.ds-nav nav a::after{content:'';position:absolute;left:14px;right:14px;bottom:9px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform 260ms cubic-bezier(0.22,1,0.36,1)}.ds-nav nav a:hover,.ds-nav nav a[aria-current=true]{color:#eceef1}.ds-nav nav a[aria-current=true]::after{transform:scaleX(1)}.ds-nav nav a:focus-visible{outline:2px solid #9eb1c4;outline-offset:-2px;border-radius:4px}"
+    },
+    {
+      "name": "Editorial Column",
+      "kind": "card",
+      "refersTo": "benefit-column",
+      "description": "Benefit column on a shared top rule: title and copy only — no index, spec line or accent segment.",
+      "html": "<article class=\"ds-col\"><h3 class=\"ds-col__title\">Integration on your terms</h3><p class=\"ds-col__body\">Accept your users’ API keys, or let them authorise through Fast API’s hosted sign-in. Test in UAT before going live.</p></article>",
+      "css": ".ds-col{max-width:340px;padding-top:36px;border-top:1px solid rgba(232,236,241,0.14);font-family:'Inter Variable',Inter,system-ui,sans-serif;color:#eceef1}.ds-col__title{margin:0;font-size:20px;font-weight:500;line-height:1.3;letter-spacing:-0.012em;text-wrap:balance}.ds-col__body{margin:12px 0 0;max-width:36ch;font-size:15px;line-height:1.65;color:#a2a7ae}"
+    },
+    {
+      "name": "Technical Panel",
+      "kind": "custom",
+      "refersTo": "technical-panel",
+      "description": "Signature: the one lifted smoked-glass surface per page, here in its code form with the attributed line washed in Blue Titanium.",
+      "html": "<div class=\"ds-panel\"><p class=\"ds-panel__bar\">Order request</p><div class=\"ds-panel__body\"><div class=\"ds-panel__req\"><span class=\"ds-panel__tag\">POST</span><span>private/create-order</span></div><pre class=\"ds-panel__code\"><span>  \"side\": \"BUY\",</span><span>  \"quantity\": \"0.25\",</span><span class=\"is-hl\">  \"broker_id\": \"ABCD\"</span></pre></div></div>",
+      "css": ".ds-panel{max-width:560px;border:1px solid rgba(232,236,241,0.14);border-radius:18px;background:linear-gradient(180deg,rgba(255,255,255,0.035),rgba(255,255,255,0) 40%),#101114;box-shadow:inset 0 1px 0 rgba(255,255,255,0.05),0 40px 80px -40px rgba(0,0,0,0.7);overflow:hidden;color:#a2a7ae}.ds-panel__bar{margin:0;padding:16px 28px;border-bottom:1px solid rgba(232,236,241,0.08);font:13px/1.5 'Inter Variable',Inter,system-ui,sans-serif;color:#a2a7ae}.ds-panel__body{padding:32px 28px 36px}.ds-panel__req{display:flex;gap:14px;align-items:center;margin-bottom:18px;font:12px/1 'JetBrains Mono Variable',ui-monospace,monospace}.ds-panel__tag{padding:3px 8px;border:1px solid rgba(232,236,241,0.14);border-radius:6px;color:#eceef1;letter-spacing:0.08em}.ds-panel__code{margin:0;padding:18px 0;border-radius:12px;background:rgba(0,0,0,0.32);border:1px solid rgba(232,236,241,0.08);font:13px/1.75 'JetBrains Mono Variable',ui-monospace,monospace}.ds-panel__code span{display:block;padding:0 20px;white-space:pre}.ds-panel__code .is-hl{background:rgba(158,177,196,0.14);box-shadow:inset 2px 0 0 #9eb1c4;color:#eceef1}"
+    },
+    {
+      "name": "FAQ Item",
+      "kind": "custom",
+      "refersTo": "accordion",
+      "description": "Accordion row: question with a hairline ring whose plus folds flat into a minus; answer opens via grid rows.",
+      "html": "<div class=\"ds-qa is-open\"><button class=\"ds-qa__q\" aria-expanded=\"true\"><span>How is commission attributed?</span><span class=\"ds-qa__icon\"></span></button><div class=\"ds-qa__a\"><div><p>Through the broker_id parameter on private/create-order. The code is case-sensitive.</p></div></div></div>",
+      "css": ".ds-qa{max-width:640px;border-bottom:1px solid rgba(232,236,241,0.08);font-family:'Inter Variable',Inter,system-ui,sans-serif}.ds-qa__q{display:flex;justify-content:space-between;align-items:center;gap:24px;width:100%;min-height:72px;padding:20px 0;background:none;border:0;text-align:left;font-size:17px;font-weight:500;line-height:1.4;letter-spacing:-0.01em;color:#a2a7ae;cursor:pointer;transition:color 260ms cubic-bezier(0.22,1,0.36,1)}.ds-qa__q:hover,.ds-qa.is-open .ds-qa__q{color:#eceef1}.ds-qa__q:focus-visible{outline:2px solid #9eb1c4;outline-offset:-2px}.ds-qa__icon{position:relative;flex:none;width:28px;height:28px;border:1px solid rgba(232,236,241,0.14);border-radius:50%}.ds-qa__icon::before,.ds-qa__icon::after{content:'';position:absolute;top:50%;left:50%;width:10px;height:1.2px;margin:-0.6px 0 0 -5px;background:currentColor;transition:transform 260ms cubic-bezier(0.22,1,0.36,1)}.ds-qa__icon::after{transform:rotate(90deg)}.ds-qa.is-open .ds-qa__icon::after{transform:rotate(0)}.ds-qa__a{display:grid;grid-template-rows:0fr;transition:grid-template-rows 260ms cubic-bezier(0.22,1,0.36,1)}.ds-qa.is-open .ds-qa__a{grid-template-rows:1fr}.ds-qa__a>div{overflow:hidden}.ds-qa__a p{margin:0;padding:0 64px 28px 0;font-size:15px;line-height:1.65;color:#a2a7ae}"
+    },
+    {
+      "name": "Spec Table Row",
+      "kind": "custom",
+      "refersTo": "terms-row",
+      "description": "Technical-data row: Platinum term label (500), Satin Silver value, hairline divider.",
+      "html": "<dl class=\"ds-spec\"><div><dt>Attributed orders</dt><dd>API orders that include your <code>broker_id</code>. Web and app orders are excluded.</dd></div><div><dt>Settlement</dt><dd>Paid directly to your Exchange account.</dd></div></dl>",
+      "css": ".ds-spec{margin:0;max-width:720px;font:15px/1.6 'Inter Variable',Inter,system-ui,sans-serif}.ds-spec>div{display:grid;grid-template-columns:3fr 8fr;gap:24px;padding:20px 0;border-bottom:1px solid rgba(232,236,241,0.08)}.ds-spec dt{font-weight:500;color:#eceef1}.ds-spec dd{margin:0;color:#a2a7ae}.ds-spec code{font-family:'JetBrains Mono Variable',ui-monospace,monospace;font-size:0.92em;padding:1px 4px;color:#eceef1;border-radius:4px;background:rgba(255,255,255,0.06)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Graphite & Engineered Calm",
+    "overview": "Deep graphite holds the whole page, and light is the only drama. Each programme page has exactly one expressive moment: the Hero, a single precision-engineered object lit from one side, set in generous negative space with the copy in its dark half. Everything after it is markedly calmer: flat graphite, hairline structure, measured typography and wide, unhurried spacing. The calm is engineered, not empty. Every edge sits on a 12-column grid and every block shares the same content column, and the asymmetric balance of the Hero carries a quiet wabi-sabi restraint.\n\nTechnology is felt through materials, lighting and precision, never through effects or labelling. The material vocabulary is clean metal, smoked glass and controlled reflection: a 1px light edge on the primary plate, a faint top-down sheen on the one lifted panel, a single moment when the Hero's lit edge catches the light and then rests, and a sheen that crosses the primary plate on hover. As the page scrolls, the Hero photograph trails slightly behind the copy (up to 110px; 40px on mobile), so the object reads as set back in space. On wider screens the copy holds full opacity for the first 30% of the scroll, then eases to 40%. It should read like Apple and Porsche, not science fiction. Headings speak for themselves. There are no kickers, no decorative numbering and no monospace \"engineering\" costume. Surfaces are always clean and smooth. Distress, grain, rust, neon, glow and Web3 iconography are rejected outright.\n\nThe system is shared by every programme page (API Broker, Affiliate, Market Maker, OTC). Only copy, links, the hero image and feature-panel data change between pages, so every rule here applies to all of them.",
+    "keyCharacteristics": [
+      "Graphite Night field with Platinum as the single brightest element on any screen.",
+      "One cinematic Hero, then flat tonal sections divided by hairlines. The closing has no image.",
+      "Headings carry each section alone, with no eyebrow or kicker above them.",
+      "Editorial columns and spec-sheet tables in place of boxed cards.",
+      "Monospace only for code, identifiers and numerals whose order matters.",
+      "Quiet-but-tactile interaction: presses answer on pointer-down, small hovers reward attention, and illustrations explain themselves once the reader arrives.",
+      "Photography graded to neutral graphite, with its black point matched to the page so it dissolves into the page instead of sitting in a frame."
+    ],
+    "rules": [
+      {
+        "name": "The One Light Rule",
+        "body": "Each viewport has one bright object, and it is the primary CTA plate. Nothing else may be filled with Platinum or approach its luminance.",
+        "section": "colors"
+      },
+      {
+        "name": "The Rare Metal Rule",
+        "body": "Blue Titanium appears at most twice in any panel and never as a fill larger than a dot or a text-line wash. It marks the point that matters, not decoration.",
+        "section": "colors"
+      },
+      {
+        "name": "The Dissolve Rule",
+        "body": "Every photograph's black point is Graphite Night, produced with `scripts/grade_images.py`. An image that shows a visible edge against the page is graded wrong.",
+        "section": "colors"
+      },
+      {
+        "name": "The Medium Ceiling Rule",
+        "body": "No text heavier than 500, except the 600-weight letter-spaced wordmark. Hierarchy comes from size, tracking and colour, never from bold.",
+        "section": "typography"
+      },
+      {
+        "name": "The No Kicker Rule",
+        "body": "Nothing sits above a heading: no eyebrow, no category label, no tick. If a heading needs a label to make sense, rewrite the heading.",
+        "section": "typography"
+      },
+      {
+        "name": "The Honest Mono Rule",
+        "body": "Monospace is reserved for code, identifiers and numerals whose order the reader needs. It never labels, decorates or sets prose. Never number items that have no sequence.",
+        "section": "typography"
+      },
+      {
+        "name": "The Measure Rule",
+        "body": "Text never spans the full 1200px. Every paragraph has an explicit character measure.",
+        "section": "layout"
+      },
+      {
+        "name": "The Single Lift Rule",
+        "body": "At most one lifted surface per section. Benefits, terms, the FAQ, process steps and the closing stay flat on hairlines.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Light Edge Rule",
+        "body": "Metallic quality is expressed as a 1px top highlight and a faint top-down sheen, never as a glow, gradient border or reflection map.",
+        "section": "elevation"
+      },
+      {
+        "name": "The One Photograph Rule",
+        "body": "The Hero is the page's only photograph. The closing resolves on flat graphite, with the Platinum plate as its only light.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep the Hero as the only cinematic moment and the only photograph, then step down to flat graphite immediately after it.",
+      "Do let every section open with its headline alone, then the lede.",
+      "Do grade the Hero photograph to neutral graphite with its black point at Graphite Night, adding sub-level dither so dark gradients don't band.",
+      "Do keep Platinum fills for the primary CTA plate alone, under the One Light Rule.",
+      "Do show partner logos only as authentic files, under one muted greyscale treatment, with their original proportions.",
+      "Do start every paired content block at column 5, so edges align from section to section.",
+      "Do lead with one authored Hero moment: the copy rises once via CSS (never waiting on script), the light catches once, and the photograph trails on scroll. Scroll-driven values are written directly to the moving element each frame (never through an inherited variable), and `will-change` is set only while the Hero is on screen.",
+      "Do keep section entrances layered and brief. The headline arrives, then its lede 140ms later; groups with a real order settle in turn (benefit columns 90ms apart, process steps 80ms apart). The process rail draws in once over 960ms.",
+      "Do honour `prefers-reduced-motion` by keeping the feedback but removing the travel. Every change becomes a 150ms opacity fade; scale, slide and rise are dropped; heights switch instantly; and the Hero light simply appears.",
+      "Do keep every text colour at WCAG AA or above, every touch target at least 44px, and every focusable element with a visible Blue Titanium ring.",
+      "Do express metallic quality through light: a 1px top highlight, a faint sheen, and the Hero's single light-catch. Never through texture.",
+      "Do make presses answer on pointer-down (120ms) and keep exits faster than entrances. Gate every hover behind `(hover: hover) and (pointer: fine)`."
+    ],
+    "donts": [
+      "Don't put an eyebrow, kicker or category label above any heading.",
+      "Don't number items whose order carries no information, or add counters such as \"02 / 03\".",
+      "Don't use monospace as a costume for labels, captions or spec lines.",
+      "Don't draw illustrative controls as real-looking buttons inside a technical panel.",
+      "Don't recreate, redraw, recolour in the file, or invent partner logos, and don't list a partner the programme's primary page does not show.",
+      "Don't use a neon crypto aesthetic, floating coins, rockets, purple or pink gradients, generic glowing spheres, cartoon icons or bulky cards.",
+      "Don't use scratches, rust, weathering, stone or concrete grain, visible noise, dirty surfaces or heavy industrial texture. Wabi-sabi here means atmosphere, balance and negative space, not distress.",
+      "Don't carry cinematic black chrome, dramatic spotlights, X-ray effects, 3D objects, second photographs or glows beyond the Hero.",
+      "Don't drift into sci-fi futurism: no HUD chrome, scanlines, grid floors or holographic effects.",
+      "Don't use bouncy springs, scroll hijacking, cursor-tracking glow, continuously moving or looping backgrounds, or an entrance on every row (terms and FAQ rows never animate in).",
+      "Don't parallax anything but the Hero photograph. The scrims and copy stay pinned to the frame.",
+      "Don't animate `backdrop-filter` or blur; switch it on and fade only colour. Don't use blend modes on layers that move.",
+      "Don't animate diagrams for decoration. Flow diagrams stay still.",
+      "Don't set text heavier than 500, or use oversized decorative typography.",
+      "Don't use saturated colour anywhere. Blue Titanium is the only hue, and it stays rare."
+    ]
+  }
+}

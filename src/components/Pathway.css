@@ -1,0 +1,137 @@
+/*
+ * Smoked-glass panel holding one horizontal rail. Rings are hollow (no stage is "current");
+ * the destination ring is the only solid one. Vertical below 768px, like the process rail.
+ */
+
+.pathway__panel {
+  margin: 0;
+  padding: clamp(28px, 1rem + 2.4vw, 56px);
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius-l);
+  background: var(--panel-sheen), var(--bg-raised);
+  box-shadow: var(--shadow-panel);
+}
+
+.pathway__caption {
+  font-size: var(--fs-ui);
+  color: var(--text-3);
+}
+
+.pathway__nodes {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--count), minmax(0, 1fr));
+  column-gap: var(--grid-gap);
+  margin-top: 48px;
+}
+
+/* The rail runs from the first ring's centre to the last */
+.pathway__nodes::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: calc((100% - (var(--count) - 1) * var(--grid-gap)) / var(--count) - 5px);
+  height: 1px;
+  background: var(--line-3);
+  transform-origin: left;
+}
+
+.js .pathway__nodes::before {
+  transform: scaleX(0);
+  transition: transform var(--dur-draw) var(--ease-soft) 160ms;
+}
+
+.js .pathway__panel.is-visible .pathway__nodes::before {
+  transform: none;
+}
+
+.pathway__node {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 10px;
+}
+
+.pathway__ring {
+  position: relative;
+  z-index: 1;
+  width: 11px;
+  height: 11px;
+  margin-bottom: 18px;
+  border: 1px solid var(--text-2);
+  border-radius: 50%;
+  background: var(--bg-raised);
+}
+
+.pathway__node:last-child .pathway__ring {
+  border-color: var(--text);
+  background: var(--text);
+}
+
+.pathway__label {
+  font-size: var(--fs-h3);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.012em;
+}
+
+.pathway__detail {
+  max-width: 26ch;
+  font-size: var(--fs-small);
+  line-height: var(--lh-small);
+  color: var(--text-2);
+}
+
+/* Stages arrive one after another as the rail reaches them */
+.js .pathway__node {
+  opacity: 0;
+  transition: opacity var(--dur-slow) var(--ease-out) calc(240ms + var(--i) * 160ms);
+}
+
+.js .pathway__panel.is-visible .pathway__node {
+  opacity: 1;
+}
+
+.pathway__note {
+  margin-top: 40px;
+}
+
+.pathway__panel .review-flag {
+  margin-top: 16px;
+}
+
+@media (max-width: 767px) {
+  .pathway__nodes {
+    grid-template-columns: 1fr;
+    row-gap: 32px;
+    margin-top: 32px;
+    padding-left: 32px;
+  }
+  .pathway__nodes::before {
+    top: 5px;
+    bottom: 5px;
+    left: 5px;
+    right: auto;
+    width: 1px;
+    height: auto;
+    transform-origin: top;
+  }
+  .js .pathway__nodes::before {
+    transform: scaleY(0);
+  }
+  .pathway__ring {
+    position: absolute;
+    top: 6px;
+    left: -32px;
+    margin: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .pathway__nodes::before,
+  .js .pathway__node {
+    transition-duration: 150ms;
+    transition-delay: 0ms;
+  }
+}

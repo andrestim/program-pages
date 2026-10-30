@@ -1,0 +1,110 @@
+/*
+ * Key figures: two to four headline numbers on hairlines, straight after the hero.
+ * Large light numerals carry the moment; there is no card, icon or background.
+ */
+
+.figures {
+  padding-block: clamp(48px, 2rem + 2.4vw, 80px) 0;
+}
+
+.figures__list {
+  --col-gap: 80px;
+  display: grid;
+  grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr));
+  column-gap: var(--col-gap);
+}
+
+.figure {
+  position: relative;
+  padding-top: 28px;
+}
+
+/* Each column's rule draws in from the left as it arrives */
+.figure::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--line-2);
+  transform-origin: left;
+}
+
+.js .figure::before {
+  transform: scaleX(0);
+  transition: transform var(--dur-draw) var(--ease-soft) var(--reveal-delay, 0ms);
+}
+
+.js .figure.is-visible::before {
+  transform: none;
+}
+
+.figure__value {
+  font-size: var(--fs-figure);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-2);
+}
+
+/* The number never breaks; a long qualifier wraps above it instead of overflowing */
+.figure__number {
+  white-space: nowrap;
+}
+
+.figure:first-child .figure__value {
+  color: var(--text);
+}
+
+/* "Up to" stays with its number: a qualifier, read first, never dropped */
+.figure__prefix {
+  white-space: nowrap;
+  font-size: var(--fs-lede);
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--text-2);
+}
+
+.figure__label {
+  margin-top: 14px;
+  max-width: 26ch;
+  font-size: var(--fs-small);
+  line-height: var(--lh-small);
+  color: var(--text-2);
+  text-wrap: pretty;
+}
+
+@media (max-width: 1023px) {
+  .figures__list {
+    --col-gap: 40px;
+  }
+}
+
+/* Phones: one compact row per figure, values in a shared column and labels beside them */
+@media (max-width: 767px) {
+  .figures__list {
+    grid-template-columns: 1fr;
+  }
+  .figure {
+    display: grid;
+    grid-template-columns: 10.5rem 1fr;
+    align-items: baseline;
+    column-gap: 16px;
+    padding: 20px 0;
+  }
+  .figure__label {
+    margin-top: 0;
+  }
+  .figure .review-flag {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .figure::before {
+    transition-duration: 150ms;
+    transition-delay: 0ms;
+  }
+}

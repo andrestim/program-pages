@@ -1,0 +1,172 @@
+/* ---------- Call to action ---------- */
+
+.cta {
+  --cta-h: 52px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: var(--cta-h);
+  padding: 0 26px;
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-small);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-tap-highlight-color: transparent;
+  /* Release: the plate settles back over 200ms */
+  transition:
+    background-color var(--dur) var(--ease-out),
+    color var(--dur) var(--ease-out),
+    box-shadow var(--dur) var(--ease-out),
+    opacity var(--dur-quick) var(--ease-out),
+    transform var(--dur-quick) var(--ease-out);
+}
+
+.cta--s {
+  --cta-h: 40px;
+  padding: 0 16px;
+  font-size: var(--fs-ui);
+  gap: 8px;
+}
+
+@media (max-width: 767px) {
+  .cta--m {
+    white-space: normal;
+    padding-block: 14px;
+  }
+}
+
+@media (pointer: coarse) {
+  .cta--s {
+    --cta-h: 44px;
+  }
+}
+
+.cta .arrow {
+  flex: none;
+  transition: transform var(--dur-quick) var(--ease-out);
+}
+
+.cta:focus-visible .arrow--right {
+  transform: translateX(3px);
+}
+
+.cta:focus-visible .arrow--up-right {
+  transform: translate(2px, -2px);
+}
+
+/* Primary: soft-white plate, the single brightest object on the page */
+.cta--primary {
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--text);
+  color: var(--text-inverse);
+  box-shadow: var(--shadow-plate);
+}
+
+/*
+ * Metallic sheen: a narrow band of light with a cool steel trailing edge, waiting just
+ * off the plate. On hover it crosses once, like light moving over brushed platinum.
+ */
+.cta--primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.95) 46%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(150, 166, 182, 0.32) 55%,
+    transparent 68%
+  );
+  opacity: 0;
+  transform: translate3d(-115%, 0, 0);
+  pointer-events: none;
+  /* On leave: fade the band out, then return it off-plate once invisible */
+  transition:
+    opacity 180ms var(--ease-out),
+    transform 0s linear 180ms;
+}
+
+/* Press: answers on pointer-down, before the click lands */
+.cta--primary:active {
+  background: var(--plate-press);
+  transform: scale(0.97);
+  transition:
+    background-color 0ms,
+    transform var(--dur-press) var(--ease-out);
+}
+
+/* Text link with an underline that draws in */
+.cta--text {
+  min-height: 44px;
+  padding: 0 2px;
+  border-radius: var(--radius-xs);
+  color: var(--text-2);
+}
+
+.cta--text .cta__label {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+  padding-bottom: 2px;
+  transition: background-size var(--dur) var(--ease-out);
+}
+
+.cta--text:active {
+  opacity: 0.7;
+  transition: opacity var(--dur-press) var(--ease-out);
+}
+
+/* Hover belongs to precise pointers only, so touch never leaves a sticky state */
+@media (hover: hover) and (pointer: fine) {
+  .cta:hover .arrow--right {
+    transform: translateX(3px);
+  }
+
+  .cta:hover .arrow--up-right {
+    transform: translate(2px, -2px);
+  }
+
+  .cta--primary:hover {
+    box-shadow: var(--shadow-plate-bloom);
+  }
+
+  /* One pass per hover; leaving mid-sweep fades the band rather than cutting it */
+  .cta--primary:hover::after {
+    opacity: 1;
+    transform: translate3d(115%, 0, 0);
+    transition:
+      opacity var(--dur-press) var(--ease-out),
+      transform var(--dur-sheen) var(--ease-in-out) 40ms;
+  }
+
+  .cta--primary:hover:active {
+    background: var(--plate-press);
+  }
+
+  .cta--text:hover {
+    color: var(--text);
+  }
+
+  .cta--text:hover .cta__label {
+    background-size: 100% 1px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta--primary:active {
+    transform: none;
+  }
+  .cta--primary::after {
+    display: none;
+  }
+}
+
+.cta[aria-disabled='true'] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

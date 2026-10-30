@@ -1,0 +1,15 @@
+Use case: small BENEFIT VIGNETTE for a premium fintech landing page, one of a coordinated series of three per page, all matching the attached reference vignettes. The attached reference images are ART DIRECTION ONLY: match their photographic style, object scale and right-side placement, plain deep graphite background, cool neutral monochrome tones and single upper-left soft directional key light. Do not copy their subjects.
+
+Format: one photorealistic minimal studio product photograph, landscape 3:2 (1536 x 1024 or larger), PNG.
+
+Composition: the subject is centred at about x=65%, y=50% and spans about 40% of the frame width. Keep the entire subject between 45% and 95% of the frame width and between 20% and 80% of the frame height, because the image is later cropped to 4:3 from that area. The left half stays completely empty.
+
+Background: seamless, completely plain, almost black deep graphite #0b0c0e, with no horizon, floor line, gradient, vignette, texture or grain.
+
+Camera and light: gentle three-quarter top-down view, 85mm lens perspective, shallow depth of field that keeps the whole subject sharp. One soft key light from the upper left; polished edges catch it as fine silver lines; faces stay dark; deep soft contact shadows. Reflections are natural specular highlights only.
+
+Materials: premium industrial design in the spirit of Apple and Porsche Design. Dark anodised or bead-blasted titanium, polished steel and smoked glass only. Perfectly clean: no scratches, dust, wear or tool marks. Palette strictly monochrome graphite and silver, with no colour accents or warm tint.
+
+STRICTLY NO text, letters, logos, numbers, charts, screens or screen content, coins, tokens, people, hands, neon, glow, bloom, particles, light rays, sci-fi elements, watermark, or any object not described below.
+
+NEW SUBJECT: A low dark titanium block with a row of many thin, parallel machined fins rising from its top face at very tight, perfectly equal spacing, like a precision heat sink. The fin edges catch the key light as a rhythm of fine silver lines. Only the one block.

@@ -1,0 +1,207 @@
+/*
+ * Three columns on hairlines: every cell has a top rule, and the column dividers sit in
+ * the gap (as in Benefits) so the measures stay equal. Rows stack as the content needs.
+ */
+
+.grid__list {
+  --col-gap: 64px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: var(--col-gap);
+}
+
+.grid__cell {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 32px 0 48px;
+  border-top: 1px solid var(--line-2);
+}
+
+.grid__cell:not(:nth-child(3n + 1))::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(var(--col-gap) / -2);
+  width: 1px;
+  background: var(--line);
+}
+
+.grid__title {
+  font-size: var(--fs-h3);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.012em;
+  text-wrap: balance;
+}
+
+.grid__body {
+  margin-top: 12px;
+  max-width: 36ch;
+  font-size: var(--fs-small);
+  line-height: var(--lh-small);
+  color: var(--text-2);
+  text-wrap: pretty;
+}
+
+/* Links sit on one baseline at the foot of each cell */
+.grid__link {
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+.grid__note {
+  margin-top: 8px;
+  font-size: var(--fs-caption);
+  color: var(--text-3);
+}
+
+@media (max-width: 1023px) {
+  .grid__list {
+    --col-gap: 40px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .grid__cell:not(:nth-child(3n + 1))::before {
+    display: none;
+  }
+  .grid__cell:nth-child(2n)::before {
+    display: block;
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(var(--col-gap) / -2);
+    width: 1px;
+    background: var(--line);
+  }
+}
+
+@media (max-width: 767px) {
+  .grid__list {
+    grid-template-columns: 1fr;
+  }
+  .grid__cell {
+    padding: 28px 0 32px;
+  }
+  .grid__cell:nth-child(2n)::before {
+    display: none;
+  }
+}
+
+/* ---------- Ledger: the heading holds the left column, items run as ruled rows ---------- */
+
+.grid-section--ledger .grid__frame {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 0 var(--grid-gap);
+  align-items: start;
+}
+
+.grid-section--ledger .section-head {
+  grid-column: 1 / span 4;
+  position: sticky;
+  top: calc(var(--header-h) + 32px);
+  display: block;
+  margin-bottom: 0;
+}
+
+.grid-section--ledger .section-head .lede {
+  margin-top: 20px;
+}
+
+/* In the ledger the figure travels with the sticky heading, under its lede */
+.grid-section--ledger .section-head__figure {
+  display: block;
+  margin-top: 40px;
+}
+
+.grid-section--ledger .grid__list {
+  grid-column: 6 / -1;
+  display: block;
+}
+
+.grid-section--ledger .grid__cell {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 8px var(--grid-gap);
+  padding: 26px 0 28px;
+}
+
+.grid-section--ledger .grid__cell::before {
+  display: none;
+}
+
+.grid-section--ledger .grid__body {
+  margin-top: 0;
+}
+
+.grid-section--ledger .grid__link {
+  grid-column: 2;
+  padding-top: 4px;
+}
+
+/* ---------- Schedule: a numbered two-column list, like a termsheet schedule ---------- */
+
+.grid-section--schedule .grid__list {
+  --col-gap: 64px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  counter-reset: none;
+}
+
+.grid-section--schedule .grid__cell {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  column-gap: 8px;
+  padding: 24px 0 28px;
+}
+
+.grid-section--schedule .grid__cell::before {
+  display: none;
+}
+
+.grid-section--schedule .grid__num {
+  grid-row: span 2;
+  font-size: var(--fs-h3);
+  font-weight: 300;
+  line-height: 1.3;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-3);
+}
+
+.grid-section--schedule .grid__body {
+  grid-column: 2;
+}
+
+.grid__mark {
+  margin-left: 2px;
+  font-size: 0.6em;
+  color: var(--text-3);
+}
+
+@media (max-width: 1023px) {
+  .grid-section--ledger .section-head {
+    grid-column: 1 / -1;
+    position: static;
+    margin-bottom: 40px;
+  }
+  .grid-section--ledger .grid__list {
+    grid-column: 1 / -1;
+  }
+  .grid-section--ledger .grid__cell::before,
+  .grid-section--schedule .grid__cell::before {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .grid-section--ledger .grid__cell {
+    grid-template-columns: 1fr;
+  }
+  .grid-section--ledger .grid__link {
+    grid-column: 1;
+  }
+  .grid-section--schedule .grid__list {
+    grid-template-columns: 1fr;
+  }
+}

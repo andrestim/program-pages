@@ -1,0 +1,17 @@
+Use case: Signature section: one image split into three tall columns (left wall | slit | right wall) for a premium institutional fintech landing page, part of a coordinated series.
+
+Format: Landscape 3:2, the largest size available (at least 1536 x 1024; 2400 x 1600 preferred), PNG. It will be cropped to a 2.25:1 central band and split into three equal columns.
+
+Composition: STRICT SYMMETRY. A narrow vertical slit of light sits EXACTLY at the horizontal centre (x=50%) and runs the full height of the frame. The left third of the frame shows the face of the left slab and the right third the face of the right slab, each with a subtle vertical edge highlight, so that the three equal vertical thirds read as wall | light | wall. Keep the important detail between y=20% and y=80%.
+
+Art direction: match the attached API Broker hero reference above all: a cropped, ambiguous, low-key subject that bleeds off the frame edges and reads as an environment, not as a product shot. Only edges and grazing surfaces catch light; large areas fall away into near-black. Do NOT show a complete object sitting on a background. The other references show the earlier, rejected direction: whole objects that were too bright, glossy and literal. Avoid that.
+
+Materials: dark anodised or bead-blasted titanium, brushed or polished steel, smoked glass, or architectural stone-like graphite surfaces only. Perfectly clean. Palette strictly monochrome graphite and silver, with no colour cast.
+
+Light: one soft key light. Highlights are thin grazing lines and soft gradients across surfaces, never glow, bloom, flare or visible beams. Deep, quiet shadows. Overall exposure LOW: most of the frame is between near-black and dark grey.
+
+Background and darkest areas: they fall to near-black graphite #0b0c0e, with no texture, grain or noise in the dark areas.
+
+STRICTLY NO text, letters, logos, numbers, charts, screens or screen content, coins, tokens, people, hands, furniture, neon, glow, bloom, lens flare, particles, light rays, fog, sci-fi elements, watermark, or any object not described below.
+
+SUBJECT: A frontal, symmetrical architectural view of the same two monumental dark graphite titanium slabs, seen face-on, with one narrow vertical slit of soft, cool light exactly between them. The slab faces are finely textured and very dark, with a gentle vertical gradient of grazing light near the slit. A faint reflection on a polished floor at the very bottom. Calm, monumental and perfectly balanced.

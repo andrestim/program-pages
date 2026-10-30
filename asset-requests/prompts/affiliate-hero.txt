@@ -1,0 +1,15 @@
+Use case: HERO image for a premium fintech landing page, one of a coordinated series. The attached reference images are ART DIRECTION ONLY: match their photographic style, plain deep graphite background, cool neutral monochrome tones and single upper-left soft directional key light. Do not copy their subjects.
+
+Format: one photorealistic minimal studio product photograph, landscape 3:2, the largest size available (at least 1536 x 1024; 2400 x 1600 or larger preferred), PNG.
+
+Composition: the subject is centred at about x=66%, y=50% and spans about 45% of the frame width. Keep the entire subject between 30% and 94% of the frame width and between 20% and 80% of the frame height. The left 30% of the frame stays completely empty, because headline copy sits there. The 30-94% band is also cropped for mobile, so nothing important may sit outside it.
+
+Background: seamless, completely plain, almost black deep graphite #0b0c0e, with no horizon, floor line, gradient, vignette, texture or grain.
+
+Camera and light: gentle three-quarter top-down view, 85mm lens perspective, shallow depth of field that keeps the whole subject sharp. One soft key light from the upper left; polished edges catch it as fine silver lines; faces stay dark; deep soft contact shadows. Reflections are natural specular highlights only.
+
+Materials: premium industrial design in the spirit of Apple and Porsche Design. Dark anodised or bead-blasted titanium, polished steel and smoked glass only. Perfectly clean: no scratches, dust, wear or tool marks. Palette strictly monochrome graphite and silver, with no colour accents or warm tint.
+
+STRICTLY NO text, letters, logos, numbers, charts, screens or screen content, coins, tokens, people, hands, neon, glow, bloom, particles, light rays, sci-fi elements, watermark, or any object not described below.
+
+NEW SUBJECT: Five thin, precision-machined concentric rings of dark anodised titanium, lying flat and nested with equal gaps, like a ripple spreading outward from a small polished steel disc at the centre. The rings step down very slightly in height from the centre outward, so the polished top edge of each ring catches the key light as a fine silver line. In the three-quarter top-down view the rings read as ellipses. Only the five rings and the centre disc.

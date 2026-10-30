@@ -1,0 +1,354 @@
+/*
+ * The page's one lifted panel when a programme has no technical steps: smoked glass,
+ * a ring rail on the left, the published figure on the right.
+ */
+
+.estimator__panel {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 40px var(--grid-gap);
+  align-items: end;
+  padding: clamp(28px, 1rem + 2.4vw, 56px);
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius-l);
+  background: var(--panel-sheen), var(--bg-raised);
+  box-shadow: var(--shadow-panel);
+}
+
+.estimator__input {
+  grid-column: 1 / span 7;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.estimator__output {
+  grid-column: 9 / -1;
+}
+
+.estimator__label {
+  padding: 0;
+  font-size: var(--fs-ui);
+  color: var(--text-3);
+}
+
+/* ---------- Curve: the published outputs over the same stops; the travelled part in Satin Silver ---------- */
+
+.estimator__curve {
+  position: relative;
+  height: clamp(96px, 4rem + 4vw, 148px);
+  margin-top: 28px;
+}
+
+.estimator__curve-box {
+  position: absolute;
+  inset: 0;
+}
+
+.estimator__curve svg {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+}
+
+.estimator__curve path {
+  fill: none;
+  stroke-width: 1;
+  stroke-linejoin: round;
+}
+
+/* One stroke, redrawn from wherever it is: a transition, so a new choice mid-draw just re-targets */
+.estimator__curve-on {
+  transition: stroke-dashoffset 640ms var(--ease-out);
+}
+
+.estimator__curve-all {
+  stroke: var(--line-3);
+}
+
+.estimator__curve-on {
+  stroke: var(--text-2);
+}
+
+.estimator__dot {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  margin: -3.5px 0 0 -3.5px;
+  border: 1px solid var(--line-3);
+  border-radius: 50%;
+  background: var(--bg-raised);
+  transition:
+    border-color var(--dur) var(--ease-out),
+    background-color var(--dur) var(--ease-out);
+}
+
+.estimator__dot.is-passed {
+  border-color: var(--text-2);
+}
+
+.estimator__dot.is-active {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+/* ---------- Rail: equal stops on one hairline, the passed part in Satin Silver ---------- */
+
+.estimator__rail {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--count), minmax(0, 1fr));
+  margin-top: 28px;
+}
+
+.estimator__rail::before,
+.estimator__rail::after {
+  content: '';
+  position: absolute;
+  top: 21px;
+  left: 0;
+  height: 1px;
+}
+
+.estimator__rail::before {
+  right: calc(100% / var(--count) * 0.5);
+  left: calc(100% / var(--count) * 0.5);
+  background: var(--line-2);
+}
+
+/* The travelled length, from the first stop to the selected one */
+.estimator__rail::after {
+  left: calc(100% / var(--count) * 0.5);
+  width: calc(100% / var(--count) * var(--at));
+  background: var(--text-2);
+  transition: width var(--dur-slow) var(--ease-out);
+}
+
+.estimator__stop {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  min-height: 44px;
+  padding-top: 16px;
+  cursor: pointer;
+}
+
+.estimator__ring {
+  width: 11px;
+  height: 11px;
+  border: 1px solid var(--line-3);
+  border-radius: 50%;
+  background: var(--bg-raised);
+  transition:
+    background-color var(--dur) var(--ease-out),
+    border-color var(--dur) var(--ease-out),
+    transform var(--dur) var(--ease-out);
+}
+
+.estimator__stop.is-passed .estimator__ring {
+  border-color: var(--text-2);
+}
+
+.estimator__stop.is-active .estimator__ring {
+  border-color: var(--accent);
+  background: var(--accent);
+  transform: scale(1.18);
+}
+
+.estimator__stop-label {
+  font-size: var(--fs-ui);
+  font-variant-numeric: tabular-nums;
+  color: var(--text-3);
+  transition: color var(--dur) var(--ease-out);
+}
+
+.estimator__stop.is-active .estimator__stop-label {
+  color: var(--text);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .estimator__stop:hover .estimator__stop-label {
+    color: var(--text-2);
+  }
+  .estimator__stop.is-active:hover .estimator__stop-label {
+    color: var(--text);
+  }
+}
+
+.estimator__stop:has(input:focus-visible) .estimator__ring {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+/* ---------- Output ---------- */
+
+.estimator__value {
+  margin-top: 14px;
+  font-size: var(--fs-figure);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* A new figure settles in; no count-up */
+.estimator__value span {
+  display: inline-block;
+  animation: estimator-in var(--dur-enter) var(--ease-out) both;
+}
+
+@keyframes estimator-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, var(--panel-shift), 0);
+  }
+}
+
+.estimator__note {
+  margin-top: 16px;
+  max-width: 34ch;
+  font-size: var(--fs-caption);
+  line-height: 1.5;
+  color: var(--text-3);
+}
+
+.estimator__panel .review-flag {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 1023px) {
+  .estimator__input,
+  .estimator__output {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 767px) {
+  .estimator__stop-label {
+    font-size: var(--fs-micro);
+  }
+}
+
+/* ---------- Arc: the signature layout, no panel, the curve across the full measure ---------- */
+
+.estimator--arc .estimator__panel {
+  position: relative;
+  display: block;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.estimator--arc .estimator__curve {
+  height: clamp(240px, 9rem + 16vw, 420px);
+  margin-top: 0;
+}
+
+.estimator--arc .estimator__curve-all {
+  stroke: var(--line-2);
+}
+
+.estimator--arc .estimator__curve-on {
+  stroke: var(--text);
+  stroke-width: 1.5;
+}
+
+.estimator--arc .estimator__dot {
+  width: 9px;
+  height: 9px;
+  margin: -4.5px 0 0 -4.5px;
+  background: var(--bg);
+}
+
+.estimator--arc .estimator__ring {
+  background: var(--bg);
+}
+
+/* The curve rises to the right, so the figure sits in the empty upper left */
+.estimator--arc .estimator__output {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 44%;
+}
+
+.estimator--arc .estimator__value {
+  margin-top: 16px;
+}
+
+/*
+ * The curve's dots already mark each stop, so the rail keeps only its labels. The legend
+ * becomes the axis caption under them: floated out of its special legend box so flex can order it.
+ */
+.estimator--arc .estimator__input {
+  display: flex;
+  flex-direction: column;
+}
+
+.estimator--arc .estimator__input > .estimator__label {
+  float: left;
+  order: 3;
+  margin-top: 14px;
+  font-size: var(--fs-caption);
+  text-align: center;
+}
+
+.estimator--arc .estimator__ring {
+  display: none;
+}
+
+.estimator--arc .estimator__stop {
+  gap: 0;
+  padding-top: 14px;
+}
+
+.estimator--arc .estimator__stop:has(input:focus-visible) .estimator__stop-label {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: var(--radius-xs);
+}
+
+.estimator--arc .estimator__rail {
+  margin-top: 8px;
+  border-top: 1px solid var(--line);
+}
+
+.estimator--arc .estimator__rail::before,
+.estimator--arc .estimator__rail::after {
+  display: none;
+}
+
+.estimator--arc .estimator__stop-label {
+  font-size: var(--fs-small);
+}
+
+@media (max-width: 767px) {
+  .estimator--arc .estimator__output {
+    position: static;
+    max-width: none;
+    margin-bottom: 32px;
+  }
+  .estimator--arc .estimator__panel {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+  .estimator--arc .estimator__curve {
+    height: 200px;
+  }
+  .estimator--arc .estimator__stop-label {
+    font-size: var(--fs-micro);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .estimator__curve-on {
+    transition-duration: 150ms;
+  }
+}

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#0b0c0e" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Partner Programmes</title>
+    <meta name="description" content="Partner programme concept pages: API Broker, Affiliate, Market Maker and OTC." />
+    <script>
+      document.documentElement.classList.add('js');
+      // Preload only the selected programme's hero. Widths mirror each config's <picture> sources
+      // and sizes exactly, so each viewport fetches one file. Keep in step with src/programs/.
+      (function () {
+        var heroes = {
+          'api-broker': [[1000, 1600, 2400], [800, 1200]],
+          affiliate: [[1000, 1536], [800, 980]],
+          'market-maker': [[1000, 1536], [800, 980]],
+          otc: [[1000, 1536], [800, 980]],
+        };
+        var id = new URLSearchParams(location.search).get('program');
+        // The hub and unknown ids preload nothing
+        if (!heroes[id]) return;
+        var set = function (name, widths) {
+          return widths.map(function (w) { return 'assets/' + id + '/' + name + '-' + w + '.webp ' + w + 'w'; }).join(', ');
+        };
+        [
+          ['(min-width: 768px)', 'hero', heroes[id][0], '(max-width: 1023px) 100vw, 82vw'],
+          ['(max-width: 767px)', 'hero-portrait', heroes[id][1], '100vw'],
+        ].forEach(function (p) {
+          var l = document.createElement('link');
+          l.rel = 'preload';
+          l.as = 'image';
+          l.type = 'image/webp';
+          l.media = p[0];
+          l.setAttribute('imagesrcset', set(p[1], p[2]));
+          l.setAttribute('imagesizes', p[3]);
+          document.head.appendChild(l);
+        });
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

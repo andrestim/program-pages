@@ -1,0 +1,104 @@
+{
+  "version": 2,
+  "created": "2026-10-30",
+  "outputDir": "output/",
+  "rule": "One PNG per asset, saved at `file` with that exact name. Copy from the generator's default location; write nothing else in the project.",
+  "assets": [
+    {
+      "id": "affiliate-hero-v2",
+      "page": "affiliate",
+      "use": "Hero (desktop and mobile)",
+      "file": "output/affiliate-hero-v2.png",
+      "aspect": "3:2",
+      "minSize": [
+        1536,
+        1024
+      ],
+      "preferredSize": [
+        2400,
+        1600
+      ],
+      "prompt": "prompts/affiliate-hero-v2.txt",
+      "references": [
+        "../references/ref-hero-api-broker.webp"
+      ],
+      "rejectedExamples": [
+        "../output/affiliate-hero.png",
+        "../output/market-maker-hero.png",
+        "../output/otc-hero.png"
+      ]
+    },
+    {
+      "id": "market-maker-hero-v2",
+      "page": "market-maker",
+      "use": "Hero (desktop and mobile)",
+      "file": "output/market-maker-hero-v2.png",
+      "aspect": "3:2",
+      "minSize": [
+        1536,
+        1024
+      ],
+      "preferredSize": [
+        2400,
+        1600
+      ],
+      "prompt": "prompts/market-maker-hero-v2.txt",
+      "references": [
+        "../references/ref-hero-api-broker.webp"
+      ],
+      "rejectedExamples": [
+        "../output/affiliate-hero.png",
+        "../output/market-maker-hero.png",
+        "../output/otc-hero.png"
+      ]
+    },
+    {
+      "id": "otc-hero-v2",
+      "page": "otc",
+      "use": "Hero (desktop) and tall crop (mobile)",
+      "file": "output/otc-hero-v2.png",
+      "aspect": "3:2",
+      "minSize": [
+        1536,
+        1024
+      ],
+      "preferredSize": [
+        2400,
+        1600
+      ],
+      "prompt": "prompts/otc-hero-v2.txt",
+      "references": [
+        "../references/ref-hero-api-broker.webp"
+      ],
+      "rejectedExamples": [
+        "../output/affiliate-hero.png",
+        "../output/market-maker-hero.png",
+        "../output/otc-hero.png"
+      ]
+    },
+    {
+      "id": "otc-plate-v2",
+      "page": "otc",
+      "use": "Signature section: one image split into three tall columns (left wall | slit | right wall)",
+      "file": "output/otc-plate-v2.png",
+      "aspect": "3:2",
+      "minSize": [
+        1536,
+        1024
+      ],
+      "preferredSize": [
+        2400,
+        1600
+      ],
+      "prompt": "prompts/otc-plate-v2.txt",
+      "references": [
+        "../references/ref-hero-api-broker.webp"
+      ],
+      "rejectedExamples": [
+        "../output/affiliate-hero.png",
+        "../output/market-maker-hero.png",
+        "../output/otc-hero.png"
+      ]
+    }
+  ]
+}

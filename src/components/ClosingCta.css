@@ -1,0 +1,155 @@
+.closing__inner {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 0 var(--grid-gap);
+  align-items: end;
+}
+
+.closing__title {
+  grid-column: 1 / span 6;
+  grid-row: 1 / span 2;
+  align-self: end;
+  font-size: var(--fs-statement);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: var(--tracking-display);
+  text-wrap: balance;
+}
+
+.closing__body {
+  grid-column: 8 / -1;
+  max-width: 36ch;
+}
+
+.closing__action {
+  grid-column: 8 / -1;
+  margin-top: 32px;
+}
+
+/* Audience paths: equal columns on one top rule, each ending on its own plate */
+.closing__paths {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(var(--paths, 2), minmax(0, 1fr));
+  gap: 0 var(--grid-gap);
+  margin-top: clamp(48px, 5vw, 72px);
+}
+
+.closing__path {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 32px;
+  border-top: 1px solid var(--line-2);
+}
+
+.closing__path-title {
+  font-size: var(--fs-h3);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.012em;
+}
+
+.closing__path-body {
+  margin: 12px 0 32px;
+  max-width: 36ch;
+  font-size: var(--fs-small);
+  line-height: var(--lh-small);
+  color: var(--text-2);
+}
+
+.closing__path .cta {
+  margin-top: auto;
+}
+
+/* Fine print under the action, e.g. an eligibility disclaimer */
+.closing__note {
+  grid-column: 8 / -1;
+  margin-top: 24px;
+  max-width: 44ch;
+  font-size: var(--fs-caption);
+  line-height: 1.5;
+  color: var(--text-3);
+}
+
+.closing__paths ~ .closing__note {
+  grid-column: 1 / span 6;
+}
+
+@media (max-width: 1023px) {
+  .closing__title {
+    grid-row: auto;
+  }
+  .closing__note {
+    grid-column: 1 / span 10;
+  }
+  .closing__title,
+  .closing__body,
+  .closing__action {
+    grid-column: 1 / span 10;
+  }
+  .closing__body {
+    margin-top: 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  .closing__title,
+  .closing__body,
+  .closing__action {
+    grid-column: 1 / -1;
+  }
+  .closing__action .cta,
+  .closing__path .cta {
+    width: 100%;
+  }
+  .closing__paths {
+    grid-template-columns: 1fr;
+    row-gap: 40px;
+  }
+  .closing__note {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Signature: the action stands on a ruled line, like the signature block of a document */
+.closing--signature .closing__action {
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line-3);
+}
+
+.closing--signature .closing__note {
+  margin-top: 16px;
+}
+
+/* Doors: audience paths as tall, equal columns divided by one rule */
+.closing--doors .closing__paths {
+  gap: 0;
+}
+
+.closing--doors .closing__path {
+  min-height: clamp(260px, 22vw, 340px);
+  padding: 36px clamp(24px, 3vw, 48px) 0 0;
+}
+
+.closing--doors .closing__path + .closing__path {
+  padding-left: clamp(24px, 3vw, 48px);
+  border-left: 1px solid var(--line-2);
+}
+
+.closing--doors .closing__path-title {
+  font-size: var(--fs-h2);
+  font-weight: 300;
+  line-height: var(--lh-title);
+  letter-spacing: var(--tracking-title);
+}
+
+@media (max-width: 767px) {
+  .closing--doors .closing__path,
+  .closing--doors .closing__path + .closing__path {
+    min-height: 0;
+    padding: 32px 0 0;
+    border-left: 0;
+  }
+}

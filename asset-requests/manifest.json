@@ -1,0 +1,473 @@
+{
+  "version": 1,
+  "created": "2026-10-30",
+  "outputDir": "output/",
+  "rule": "One PNG per asset, saved at `file` with that exact name. Write nothing outside asset-requests/output/.",
+  "assets": [
+    {
+      "id": "affiliate-hero",
+      "page": "affiliate",
+      "kind": "hero",
+      "slot": "Hero photograph",
+      "file": "output/affiliate-hero.png",
+      "aspect": "3:2",
+      "minSize": [
+        1536,
+        1024
+      ],
+      "preferredSize": [
+        2400,
+        1600
+      ],
+      "safeZone": {
+        "x": [
+          0.3,
+          0.94
+        ],
+        "y": [
+          0.2,
+          0.8
+        ]
+      },
+      "emptyZone": {
+        "x": [
+          0.0,
+          0.3
+        ]
+      },
+      "meaning": "Reach: one point spreading out to many people (the referral network).",
+      "prompt": "prompts/affiliate-hero.txt",
+      "references": [
+        "references/ref-hero-api-broker.webp",
+        "references/ref-vignette-commission.webp"
+      ]
+    },
+    {
+      "id": "affiliate-vignette-payouts",
+      "page": "affiliate",
+      "kind": "vignette",
+      "slot": "Benefit 1: Paid daily, in USDC (payouts and the Affiliate Dashboard)",
+      "file": "output/affiliate-vignette-payouts.png",
+      "aspect": "3:2",
+      "minSize": [
+        1536,
+        1024
+      ],
+      "preferredSize": [
+        1536,
+        1024
+      ],
+      "safeZone": {
+        "x": [
+          0.45,
+          0.95
+        ],
+        "y": [
+          0.2,
+          0.8
+        ]
+      },
+      "emptyZone": {
+        "x": [
+          0.0,
+          0.45
+        ]
+      },
+      "meaning": "A daily cadence, measured precisely.",
+      "prompt": "prompts/affiliate-vignette-payouts.txt",
+      "references": [
+        "references/ref-vignette-market.webp",
+        "references/ref-vignette-support.webp",
+        "references/ref-vignette-commission.webp"
+      ]
+    },
+    {
+      "id": "affiliate-vignette-team",
+      "page": "affiliate",
+      "kind": "vignette",
+      "slot": "Benefit 2: Grow with your team (Custom Campaign Builder, sub-affiliates, sharing up to 20%)",
+      "file": "output/affiliate-vignette-team.png",
+      "aspect": "3:2",
+      "minSize": [
+        1536,
+        1024
+      ],
+      "preferredSize": [
+        1536,
+        1024
+      ],
+      "safeZone": {
+        "x": [
+          0.45,
+          0.95
+        ],
+        "y": [
+          0.2,
+          0.8
+        ]
+      },
+      "emptyZone": {
+        "x": [
+          0.0,
+          0.45
+        ]
+      },
+      "meaning": "One source cascading into a team.",
+      "prompt": "prompts/affiliate-vignette-team.txt",
+      "references": [
+        "references/ref-vignette-market.webp",
+        "references/ref-vignette-support.webp",
+        "references/ref-vignette-commission.webp"
+      ]
+    },
+    {
+      "id": "affiliate-vignette-support",
+      "page": "affiliate",
+      "kind": "vignette",
+      "slot": "Benefit 3: Support and events (24/7 business and technical support, partner events, milestone bonuses)",
+      "file": "output/affiliate-vignette-support.png",
+      "aspect": "3:2",
+      "minSize": [
+        1536,
+        1024
+      ],
+      "preferredSize": [
+        1536,
+        1024
+      ],
+      "safeZone": {
+        "x": [
+          0.45,
+          0.95
+        ],
+        "y": [
+          0.2,
+          0.8
+        ]
+      },
+      "emptyZone": {
+        "x": [
+          0.0,
+          0.45
+        ]
+      },
+      "meaning": "Access: an invitation, a pass.",
+      "prompt": "prompts/affiliate-vignette-support.txt",
+      "references": [
+        "references/ref-vignette-market.webp",
+        "references/ref-vignette-support.webp",
+        "references/ref-vignette-commission.webp"
+      ]
+    },
+    {
+      "id": "market-maker-hero",
+      "page": "market-maker",
+      "kind": "hero",
+      "slot": "Hero photograph",
+      "file": "output/market-maker-hero.png",
+      "aspect": "3:2",
+      "minSize": [
+        1536,
+        1024
+      ],
+      "preferredSize": [
+        2400,
+        1600
+      ],
+      "safeZone": {
+        "x": [
+          0.3,
+          0.94
+        ],
+        "y": [
+          0.2,
+          0.8
+        ]
+      },
+      "emptyZone": {
+        "x": [
+          0.0,
+          0.3
+        ]
+      },
+      "meaning": "A tight spread: two sides held a fraction apart.",
+      "prompt": "prompts/market-maker-hero.txt",
+      "references": [
+        "references/ref-hero-api-broker.webp",
+        "references/ref-vignette-commission.webp"
+      ]
+    },
+    {
+      "id": "market-maker-vignette-link",
+      "page": "market-maker",
+      "kind": "vignette",
+      "slot": "Featured perk 1: Virtual private link (cloud-based co-location, stability, low latency)",
+      "file": "output/market-maker-vignette-link.png",
+      "aspect": "3:2",
+      "minSize": [
+        1536,
+        1024
+      ],
+      "preferredSize": [
+        1536,
+        1024
+      ],
+      "safeZone": {
+        "x": [
+          0.45,
+          0.95
+        ],
+        "y": [
+          0.2,
+          0.8
+        ]
+      },
+      "emptyZone": {
+        "x": [
+          0.0,
+          0.45
+        ]
+      },
+      "meaning": "A direct, private connection.",
+      "prompt": "prompts/market-maker-vignette-link.txt",
+      "references": [
+        "references/ref-vignette-market.webp",
+        "references/ref-vignette-support.webp",
+        "references/ref-vignette-commission.webp"
+      ]
+    },
+    {
+      "id": "market-maker-vignette-rate-limits",
+      "page": "market-maker",
+      "kind": "vignette",
+      "slot": "Featured perk 2: Increased rate limits (FIX, REST, WebSocket; fast execution in volatile markets)",
+      "file": "output/market-maker-vignette-rate-limits.png",
+      "aspect": "3:2",
+      "minSize": [
+        1536,
+        1024
+      ],
+      "preferredSize": [
+        1536,
+        1024
+      ],
+      "safeZone": {
+        "x": [
+          0.45,
+          0.95
+        ],
+        "y": [
+          0.2,
+          0.8
+        ]
+      },
+      "emptyZone": {
+        "x": [
+          0.0,
+          0.45
+        ]
+      },
+      "meaning": "Throughput: many channels, tightly packed.",
+      "prompt": "prompts/market-maker-vignette-rate-limits.txt",
+      "references": [
+        "references/ref-vignette-market.webp",
+        "references/ref-vignette-support.webp",
+        "references/ref-vignette-commission.webp"
+      ]
+    },
+    {
+      "id": "market-maker-vignette-capital",
+      "page": "market-maker",
+      "kind": "vignette",
+      "slot": "Featured perk 3: Capital efficiency programme (optimised capital utilisation)",
+      "file": "output/market-maker-vignette-capital.png",
+      "aspect": "3:2",
+      "minSize": [
+        1536,
+        1024
+      ],
+      "preferredSize": [
+        1536,
+        1024
+      ],
+      "safeZone": {
+        "x": [
+          0.45,
+          0.95
+        ],
+        "y": [
+          0.2,
+          0.8
+        ]
+      },
+      "emptyZone": {
+        "x": [
+          0.0,
+          0.45
+        ]
+      },
+      "meaning": "Nothing wasted: every unit of space used.",
+      "prompt": "prompts/market-maker-vignette-capital.txt",
+      "references": [
+        "references/ref-vignette-market.webp",
+        "references/ref-vignette-support.webp",
+        "references/ref-vignette-commission.webp"
+      ]
+    },
+    {
+      "id": "otc-hero",
+      "page": "otc",
+      "kind": "hero",
+      "slot": "Hero photograph",
+      "file": "output/otc-hero.png",
+      "aspect": "3:2",
+      "minSize": [
+        1536,
+        1024
+      ],
+      "preferredSize": [
+        2400,
+        1600
+      ],
+      "safeZone": {
+        "x": [
+          0.3,
+          0.94
+        ],
+        "y": [
+          0.2,
+          0.8
+        ]
+      },
+      "emptyZone": {
+        "x": [
+          0.0,
+          0.3
+        ]
+      },
+      "meaning": "One large block, moved discreetly and apart from the public market.",
+      "prompt": "prompts/otc-hero.txt",
+      "references": [
+        "references/ref-hero-api-broker.webp",
+        "references/ref-vignette-commission.webp"
+      ]
+    },
+    {
+      "id": "otc-vignette-portal",
+      "page": "otc",
+      "kind": "vignette",
+      "slot": "Solution 1: OTC Portal (instant zero-fee quotes, customisable dashboards)",
+      "file": "output/otc-vignette-portal.png",
+      "aspect": "3:2",
+      "minSize": [
+        1536,
+        1024
+      ],
+      "preferredSize": [
+        1536,
+        1024
+      ],
+      "safeZone": {
+        "x": [
+          0.45,
+          0.95
+        ],
+        "y": [
+          0.2,
+          0.8
+        ]
+      },
+      "emptyZone": {
+        "x": [
+          0.0,
+          0.45
+        ]
+      },
+      "meaning": "A window onto the market, on screen.",
+      "prompt": "prompts/otc-vignette-portal.txt",
+      "references": [
+        "references/ref-vignette-market.webp",
+        "references/ref-vignette-support.webp",
+        "references/ref-vignette-commission.webp"
+      ]
+    },
+    {
+      "id": "otc-vignette-desk",
+      "page": "otc",
+      "kind": "vignette",
+      "slot": "Solution 2: Private OTC Desk (24/7 RFQ line, white-glove, discreet)",
+      "file": "output/otc-vignette-desk.png",
+      "aspect": "3:2",
+      "minSize": [
+        1536,
+        1024
+      ],
+      "preferredSize": [
+        1536,
+        1024
+      ],
+      "safeZone": {
+        "x": [
+          0.45,
+          0.95
+        ],
+        "y": [
+          0.2,
+          0.8
+        ]
+      },
+      "emptyZone": {
+        "x": [
+          0.0,
+          0.45
+        ]
+      },
+      "meaning": "Discretion: a closed, private exchange.",
+      "prompt": "prompts/otc-vignette-desk.txt",
+      "references": [
+        "references/ref-vignette-market.webp",
+        "references/ref-vignette-support.webp",
+        "references/ref-vignette-commission.webp"
+      ]
+    },
+    {
+      "id": "otc-vignette-api",
+      "page": "otc",
+      "kind": "vignette",
+      "slot": "Solution 3: OTC API (REST, WebSocket and FIX into your own systems)",
+      "file": "output/otc-vignette-api.png",
+      "aspect": "3:2",
+      "minSize": [
+        1536,
+        1024
+      ],
+      "preferredSize": [
+        1536,
+        1024
+      ],
+      "safeZone": {
+        "x": [
+          0.45,
+          0.95
+        ],
+        "y": [
+          0.2,
+          0.8
+        ]
+      },
+      "emptyZone": {
+        "x": [
+          0.0,
+          0.45
+        ]
+      },
+      "meaning": "Plug in: precise interfaces into your own stack.",
+      "prompt": "prompts/otc-vignette-api.txt",
+      "references": [
+        "references/ref-vignette-market.webp",
+        "references/ref-vignette-support.webp",
+        "references/ref-vignette-commission.webp"
+      ]
+    }
+  ]
+}

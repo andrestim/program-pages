@@ -1,0 +1,84 @@
+/*
+ * Partner strip: a quiet interlude between Benefits and Integration.
+ * Title in the heading column (1–3); logos across the shared content column (5–12).
+ * No cards, borders, backgrounds or entrances: the logos sit directly on graphite.
+ */
+
+.partners {
+  --logo-base: 30px;
+  padding-block: clamp(48px, 2rem + 3vw, 80px);
+}
+
+.partners__inner {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 28px var(--grid-gap);
+  align-items: center;
+}
+
+.partners__title {
+  grid-column: 1 / span 3;
+  font-size: var(--fs-small);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--text-2);
+}
+
+.partners__list {
+  grid-column: 5 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.partners__item {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+/* One muted treatment for every mark: greyscale, dimmed; it brightens a little on hover */
+.partners__logo {
+  width: calc(var(--logo-base) * var(--logo-width));
+  height: auto;
+  max-width: 100%;
+  filter: grayscale(1);
+  opacity: 0.62;
+  transition:
+    opacity var(--dur) var(--ease-out),
+    transform var(--dur) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .partners__item:hover .partners__logo {
+    opacity: 0.9;
+    transform: translate3d(0, -2px, 0);
+  }
+}
+
+.partners .review-flag {
+  grid-column: 5 / -1;
+}
+
+@media (max-width: 1023px) {
+  .partners__title,
+  .partners__list,
+  .partners .review-flag {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 767px) {
+  .partners {
+    --logo-base: 26px;
+  }
+  .partners__list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 36px 24px;
+  }
+  .partners__item {
+    min-height: 40px;
+  }
+}

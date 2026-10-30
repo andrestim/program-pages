@@ -1,0 +1,201 @@
+/* Two blocks sharing one rhythm: a heading column (4) and a content column (8) */
+
+.details__block {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 24px var(--grid-gap);
+  padding-top: 36px;
+  border-top: 1px solid var(--line-2);
+}
+
+.details__block + .details__block {
+  margin-top: clamp(56px, 6vw, 88px);
+}
+
+.details__heading {
+  grid-column: 1 / span 3;
+  font-size: var(--fs-h3);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.012em;
+  text-wrap: balance;
+}
+
+/* ---------- Process: one continuous rail, a ring per step ---------- */
+
+.process {
+  position: relative;
+  grid-column: 5 / -1;
+  display: grid;
+  grid-template-columns: repeat(var(--steps, 4), minmax(0, 1fr));
+  column-gap: 32px;
+}
+
+/* The rail runs the full width through every ring, fading out after the last step */
+.process::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--line-2) 80%, transparent);
+  transform-origin: left;
+}
+
+/* It draws once, as the first step arrives */
+.js .process::before {
+  transform: scaleX(0);
+  transition: transform var(--dur-draw) var(--ease-soft) 120ms;
+}
+
+.js .process:has(.process__step.is-visible)::before {
+  transform: none;
+}
+
+.process__step {
+  position: relative;
+}
+
+.process__node {
+  position: relative;
+  display: block;
+  width: 9px;
+  height: 9px;
+  border: 1px solid var(--line-3);
+  border-radius: 50%;
+  background: var(--bg);
+}
+
+.process__num {
+  display: block;
+  margin-top: 28px;
+  font-size: var(--fs-h3);
+  font-weight: 300;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+  color: var(--text-3);
+}
+
+.process__title {
+  margin-top: 12px;
+  font-size: var(--fs-h3);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.012em;
+}
+
+.process__body {
+  margin-top: 8px;
+  max-width: 28ch;
+  font-size: var(--fs-small);
+  line-height: var(--lh-small);
+  color: var(--text-2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .process::before {
+    transition-duration: 150ms;
+    transition-delay: 0ms;
+  }
+}
+
+/* ---------- Terms: technical data, label bright, value quiet ---------- */
+
+.terms {
+  grid-column: 5 / -1;
+}
+
+.terms__row {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 8fr);
+  gap: var(--grid-gap);
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: var(--fs-small);
+  line-height: var(--lh-small);
+}
+
+.terms__row:first-child {
+  padding-top: 0;
+}
+
+.terms dt {
+  font-weight: 500;
+  color: var(--text);
+}
+
+.terms__row {
+  transition: border-color var(--dur) var(--ease-out);
+}
+
+.terms dd {
+  color: var(--text-2);
+  max-width: 54ch;
+  transition: color var(--dur) var(--ease-out);
+}
+
+/* Hover: the row's rule brightens and its value comes forward */
+@media (hover: hover) and (pointer: fine) {
+  .terms__row:hover {
+    border-bottom-color: var(--line-3);
+  }
+  .terms__row:hover dd {
+    color: var(--text);
+  }
+}
+
+@media (max-width: 1199px) {
+  .details__heading,
+  .process,
+  .terms {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 767px) {
+  .process {
+    grid-template-columns: 1fr;
+    row-gap: 28px;
+  }
+  .process::before {
+    top: 4px;
+    bottom: 12px;
+    left: 4px;
+    right: auto;
+    width: 1px;
+    height: auto;
+    background: linear-gradient(180deg, var(--line-2) 85%, transparent);
+    transform-origin: top;
+  }
+  .js .process::before {
+    transform: scaleY(0);
+  }
+  .js .process:has(.process__step.is-visible)::before {
+    transform: none;
+  }
+  .process__step {
+    padding-left: 32px;
+  }
+  .process__node {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .process__num {
+    margin-top: 0;
+    font-size: var(--fs-body);
+  }
+  .process__title {
+    margin-top: 6px;
+  }
+  .process__body {
+    max-width: none;
+  }
+  .terms__row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    padding: 16px 0;
+  }
+}
